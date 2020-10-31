@@ -14,6 +14,20 @@ export const requestAllPublicRecipes = (url_to_match) => (dispatch) => {
     .catch(error => dispatch({ type: PublicRecipesTypes.REQUEST_ALL_PUBLIC_RECIPES_FAILED, payload: error }))
 }
 
+export const requestPublicRecipeById = (recipe_id) => (dispatch) => {
+  console.log('code pass hereeeeeeeeee')
+  dispatch({ type: PublicRecipesTypes.REQUEST_SINGLE_PUBLIC_RECIPE_PENDING })
+  apiCall(`https://chieh-recipe-manager.herokuapp.com/recipes/public/${recipe_id}`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(data => dispatch({ type: PublicRecipesTypes.REQUEST_SINGLE_PUBLIC_RECIPE_SUCCESS, payload: data }))
+    .catch(error => dispatch({ type: PublicRecipesTypes.REQUEST_SINGLE_PUBLIC_RECIPE_FAILED, payload: error }))
+}
+
 export const requestFilteredPublicRecipes = (keyword) => ({
   type: PublicRecipesTypes.REQUEST_FILTERED_PUBLIC_RECIPES,
   payload: keyword

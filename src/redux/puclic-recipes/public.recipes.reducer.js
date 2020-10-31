@@ -2,8 +2,12 @@ import PublicRecipesTypes from './public.recipes.types';
 import { addUpTotalTime, filterPublicRecipes } from './public.recipes.utils'
 
 const INITIAL_STATE = {
-  isPending: true,
+  isPending: false,
   publicRecipes: [],
+  requestPublicRecipeError: '',
+  requestSingleRecipePending: true,
+  singlePublicRecipe: {},
+  requestSinglePublicRecipeError: '',
   publicSearchFilter: 'byTitle',
   filteredPublicRecipes: [],
   selectedType: 'All',
@@ -28,7 +32,28 @@ const requestPublicRecipesReducer = (state = INITIAL_STATE, action={}) => {
     case PublicRecipesTypes.REQUEST_ALL_PUBLIC_RECIPES_FAILED:
       return {
         ...state,
-        error: action.payload
+        requestPublicRecipeError: action.payload
+      }
+    case PublicRecipesTypes.REQUEST_SINGLE_PUBLIC_RECIPE_PENDING:
+      return {
+        ...state,
+        requestSingleRecipePending: true,
+        singlePublicRecipe: {},
+        requestSinglePublicRecipeError: ''
+      }
+    case PublicRecipesTypes.REQUEST_SINGLE_PUBLIC_RECIPE_SUCCESS:
+      return {
+        ...state,
+        singlePublicRecipe: action.payload,
+        requestSingleRecipePending: false,
+        requestSinglePublicRecipeError: ''
+      }
+    case PublicRecipesTypes.REQUEST_SINGLE_PUBLIC_RECIPE_FAILED:
+      return {
+        ...state,
+        requestSingleRecipePending: false,
+        singlePublicRecipe: {},
+        requestSinglePublicRecipeError: action.payload,
       }
     case PublicRecipesTypes.SET_PUBLIC_SEARCH_FILTER:
       return {

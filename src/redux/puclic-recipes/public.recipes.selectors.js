@@ -12,6 +12,21 @@ export const selectAllPublicRecipes = createSelector(
   allPublicRecipes => allPublicRecipes.publicRecipes
 )
 
+export const selectSinglePublicRecipePending = createSelector(
+  [selectPublicRecipes],
+  allPublicRecipes => allPublicRecipes.requestSingleRecipePending
+)
+
+export const selectSinglePublicRecipe = createSelector(
+  [selectPublicRecipes],
+  allPublicRecipes => allPublicRecipes.singlePublicRecipe
+)
+
+export const selectSinglePublicRecipeFailed = createSelector(
+  [selectPublicRecipes],
+  allPublicRecipes => allPublicRecipes.requestSinglePublicRecipeError
+)
+
 export const selectPublicSelectedType = createSelector(
   [selectPublicRecipes],
   allPublicRecipes => allPublicRecipes.selectedType

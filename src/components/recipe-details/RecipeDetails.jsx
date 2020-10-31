@@ -19,8 +19,15 @@ import { selectUserId } from '../../redux/user/user.selectors';
 import { setToBeUpdatedRecipe, resetUpdateRecipe } from '../../redux/update-recipe/update.recipe.actions';
 import { setOnEditRecipeForPhoto } from '../../redux/create-recipe/create.recipe.actions'
 
+import { 
+  selectSinglePublicRecipePending,
+  selectSinglePublicRecipe
+} from '../../redux/puclic-recipes/public.recipes.selectors';
+
 const mapStateToProps = createStructuredSelector({
-  userId: selectUserId
+  userId: selectUserId,
+  single_recipe_pending: selectSinglePublicRecipePending,
+  single_recipe: selectSinglePublicRecipe,
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -29,8 +36,15 @@ const mapDispatchToProps = (dispatch) => ({
   setOnEditRecipeForPhoto: (data) => dispatch(setOnEditRecipeForPhoto(data))
 });
 
-const RecipeDetails = ({ recipe, history, userId, setToBeUpdatedRecipe, resetUpdateRecipe, setOnEditRecipeForPhoto }) => {
-  const { title, preparation, meal, dessert, drink, total_time, cook_time, servings, ingredients, steps, owner } = recipe;
+const RecipeDetails = ({ recipe, history, userId, setToBeUpdatedRecipe, resetUpdateRecipe, setOnEditRecipeForPhoto, single_recipe_pending, single_recipe }) => {
+  if (recipe) {
+    var { img, title, preparation, meal, dessert, drink, total_time, cook_time, servings, ingredients, steps, owner } = recipe;
+    var recipe_public = recipe.public;
+  } else {
+    ({ img, title, preparation, meal, dessert, drink, total_time, cook_time, servings, ingredients, steps, owner } = single_recipe);
+    recipe_public = single_recipe.public;
+  }
+
   return (
     <div className='recipe-details'>
       <div className='recipe-details-row1'>
@@ -55,7 +69,7 @@ const RecipeDetails = ({ recipe, history, userId, setToBeUpdatedRecipe, resetUpd
         { meal ? <Hashtag hashtag="Meal" food_category /> : null }
         { dessert ? <Hashtag hashtag="Dessert" food_category /> : null }
         { drink ? <Hashtag hashtag="Drink" food_category /> : null }
-        <Hashtag hashtag={`${recipe.public ? 'Public' : 'Private'}`} public_private />
+        <Hashtag hashtag={`${recipe_public ? 'Public' : 'Private'}`} public_private />
       </div>
 
       <div className='recipe-details-row2'>
@@ -84,7 +98,7 @@ const RecipeDetails = ({ recipe, history, userId, setToBeUpdatedRecipe, resetUpd
 
       <div className={`${userId !== 'no-user' &&  userId === owner ? 'recipe-details-auth': ''} recipe-details-img-container`}>
       {
-        recipe.img ? <img alt='foodimg' src={`data:image/png;base64,${recipe.img}`} /> 
+        img ? <img alt='foodimg' src={`data:image/png;base64,${img}`} /> 
         : <img className='food-img-default' alt='default_foodimg' src={require('../../assets/foodimg_default_detail.png')} />
       }
       {
