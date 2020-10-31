@@ -111,8 +111,8 @@ class ExplorePage extends Component {
             <PublicSearchBar onChange={this.handleChange} value={`${publicKeyword==='random' ? '' : publicKeyword}`} className='searchbar-explore'>
               {
                 publicFilterType === "byTitle" ?
-                "Searching by title... ex. Chocolate tart"
-                : "Searching by ingredient... ex. Egg"
+                "Search by title, ex. Chocolate tart"
+                : "Search by ingredient, ex. Avocado"
               }
             </PublicSearchBar>
             <div className='category-random-btn'>

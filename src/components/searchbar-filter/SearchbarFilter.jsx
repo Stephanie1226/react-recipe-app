@@ -24,25 +24,37 @@ const BootstrapInput = withStyles((theme) => ({
   root: {
     "label + &": {
       marginTop: theme.spacing(3)
+    },
+    "& .MuiSelect-icon": {
+      color: "#2A356C"
     }
   },
   input: {
-    height: "20px",
-    width: "255px",
+    height: 20,
     borderRadius: 0,
-    borderTopLeftRadius: 0,
-    borderBottomLeftRadius: 0,
-    border: '0px solid',
+    position: "relative",
+    backgroundColor: "#ffffff",
+    border: "0px solid #2A356C",
     borderTopColor: "#2A356C",
-    borderTopWidth: '3px',
+    borderTopWidth: "3px",
     borderBottomColor: "#2A356C",
-    borderBottomWidth: '3px',
-    backgroundColor: "#E8E8E8",
+    borderBottomWidth: "3px",
     fontSize: 16,
+    color: "#2A356C",
+    fontFamily: [
+      '"Cabin"',
+      'sans-serif',
+    ].join(','),
+
     padding: "10px 26px 10px 12px",
     "&:focus": {
       borderRadius: 0,
-      backgroundColor: "#E8E8E8"
+      backgroundColor: "#ffffff",
+      border: "0px solid #2A356C",
+      borderTopColor: "#2A356C",
+      borderTopWidth: "3px",
+      borderBottomColor: "#2A356C",
+      borderBottomWidth: "3px"
     }
   }
 }))(InputBase);
@@ -68,8 +80,8 @@ const SearchbarFilter = ({ setPublicSearchFilter, requestFilteredPublicRecipes, 
         onChange={handleChange}
         input={<BootstrapInput />}
       >
-        <MenuItem value={"byTitle"}>Search by title</MenuItem>
-        <MenuItem value={"byIngredient"}>Search by ingredient</MenuItem>
+        <MenuItem value={"byTitle"}>By Title</MenuItem>
+        <MenuItem value={"byIngredient"}>By Ingredient</MenuItem>
       </Select>
     </FormControl>
   );
