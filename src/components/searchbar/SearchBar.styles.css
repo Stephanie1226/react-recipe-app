@@ -7,10 +7,8 @@
   margin-bottom: 20px;
 }
 
-.search-span {
-  display: block;
-}
 .searchTerm {
+  background-color: #F7EFEE;
   flex: 1;
   border: 3px solid #2A356C;
   border-right: none;

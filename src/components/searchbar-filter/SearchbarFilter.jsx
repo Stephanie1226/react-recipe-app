@@ -33,7 +33,7 @@ const BootstrapInput = withStyles((theme) => ({
     height: 20,
     borderRadius: 0,
     position: "relative",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#F7EFEE",
     border: "0px solid #2A356C",
     borderTopColor: "#2A356C",
     borderTopWidth: "3px",
@@ -49,7 +49,7 @@ const BootstrapInput = withStyles((theme) => ({
     padding: "10px 26px 10px 12px",
     "&:focus": {
       borderRadius: 0,
-      backgroundColor: "#ffffff",
+      backgroundColor: "#F7EFEE",
       border: "0px solid #2A356C",
       borderTopColor: "#2A356C",
       borderTopWidth: "3px",
