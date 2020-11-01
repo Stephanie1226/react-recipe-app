@@ -47,9 +47,9 @@ class CategoryButton extends Component {
     this.props.resetFilteredPublicRecipes();
     this.props.setPublicCurrentPage(1);
     if (event.currentTarget.value === 'All') {
-      this.props.requestAllPublicRecipes('public');
+      this.props.requestAllPublicRecipes('');
     } else {
-      this.props.requestAllPublicRecipes(`public/${event.currentTarget.value.toLowerCase()}`);
+      this.props.requestAllPublicRecipes(`?publicCategory=${event.currentTarget.value.toLowerCase()}`);
     }
   }
   handledUserCategoryChange = event => {

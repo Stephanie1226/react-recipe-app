@@ -7,12 +7,13 @@ import PublicSearchBar from '../../components/searchbar/PublicSearchBar';
 import ErrorBoundry from '../../components/error-boundry/ErrorBoundry';
 import CategoryButton from '../../components/category-button/CategoryButton';
 import RecipesOverview from '../../components/recipes-overview/RecipesOverview';
-import Pagination from '@material-ui/lab/Pagination';
-
 import StyledColorfulButton from '../../components/styled-buttons/StyledColorfulButton';
 import PinkBlueButton from '../../components/pink-blue-button/PinkBlueButton';
 import EmptyMatch from '../../components/empty-match/EmptyMatch';
+import SortByFilter from '../../components/sortby-filter/SortByFilter';
 import { publicPagination } from '../../utils/public-recipes.utils';
+
+import Pagination from '@material-ui/lab/Pagination';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -32,7 +33,7 @@ import {
   selectFilteredPublicRecipes,
   selectFilteredPublicKeyword,
   selectPublicFilterType,
-  selectPublicSelectedType,
+  selectPublicSelectedCategory,
   selectPublicCurrentPage,
   selectPublicTotalPages
 } from '../../redux/puclic-recipes/public.recipes.selectors';
@@ -45,7 +46,7 @@ const mapStateToProps = createStructuredSelector({
   publicFilterType: selectPublicFilterType,
   filteredPublicRecipes: selectFilteredPublicRecipes,
   publicKeyword: selectFilteredPublicKeyword,
-  publicSelectedType: selectPublicSelectedType,
+  publicSelectedCategory: selectPublicSelectedCategory,
   publicCurrentPage: selectPublicCurrentPage,
   publicTotalPages: selectPublicTotalPages
 });
@@ -63,10 +64,10 @@ const mapDispatchToProps = (dispatch) => ({
 class ExplorePage extends Component {
   componentDidMount() {
     if (this.props.publicRecipes.length === 0) {
-      if (this.props.publicSelectedType === 'All') {
-        this.props.requestAllPublicRecipes('public');
+      if (this.props.publicSelectedCategory === 'All') {
+        this.props.requestAllPublicRecipes('');
       } else {
-        this.props.requestAllPublicRecipes(`public/${this.props.publicSelectedType.toLowerCase()}`);
+        this.props.requestAllPublicRecipes(`?publicCategory=${this.props.publicSelectedCategory.toLowerCase()}`);
       }
     }
   }
@@ -99,7 +100,7 @@ class ExplorePage extends Component {
 
   render() {
     const { history, resetUpdateRecipe, userId } = this.props;
-    const { isPending, publicRecipes, publicFilterType, publicSelectedType } = this.props;
+    const { isPending, publicRecipes, publicFilterType, publicSelectedCategory } = this.props;
     const { publicKeyword, filteredPublicRecipes, publicCurrentPage, publicTotalPages } = this.props;
     const publicRecipesPagination = publicPagination(publicRecipes, publicKeyword, filteredPublicRecipes, publicCurrentPage, publicTotalPages);
 
@@ -107,25 +108,28 @@ class ExplorePage extends Component {
       <div className='explore-page-container'>
         <h1>Explore.</h1>
         <div className='explore-search-container'>
-          <div className='explore-search-col-1'>
-            <PublicSearchBar onChange={this.handleChange} value={`${publicKeyword==='random' ? '' : publicKeyword}`} className='searchbar-explore'>
-              {
-                publicFilterType === "byTitle" ?
-                "Search by title, ex. Chocolate tart"
-                : "Search by ingredient, ex. Avocado"
-              }
-            </PublicSearchBar>
-            <div className='category-random-btn'>
-              <div className='category-btn-group'>
-                <CategoryButton category="All" explore_category explore_category_active={`${publicSelectedType === "All" ? "true" : ""}`} />
-                <CategoryButton category="Meal" explore_category explore_category_active={`${publicSelectedType === "Meal" ? "true" : ""}`} />
-                <CategoryButton category="Dessert" explore_category explore_category_active={`${publicSelectedType === "Dessert" ? "true" : ""}`} />
-                <CategoryButton category="Drink" explore_category explore_category_active={`${publicSelectedType === "Drink" ? "true" : ""}`} />
+          <div className='explore-search-col-1n2'>
+            <div className='explore-search-col-1'>
+              <PublicSearchBar onChange={this.handleChange} value={`${publicKeyword==='random' ? '' : publicKeyword}`} className='searchbar-explore'>
+                {
+                  publicFilterType === "byTitle" ?
+                  "Search by title, ex. Chocolate tart"
+                  : "Search by ingredient, ex. Avocado"
+                }
+              </PublicSearchBar>
+              <div className='category-random-btn'>
+                <div className='category-btn-group'>
+                  <CategoryButton category="All" explore_category explore_category_active={`${publicSelectedCategory === "All" ? "true" : ""}`} />
+                  <CategoryButton category="Meal" explore_category explore_category_active={`${publicSelectedCategory === "Meal" ? "true" : ""}`} />
+                  <CategoryButton category="Dessert" explore_category explore_category_active={`${publicSelectedCategory === "Dessert" ? "true" : ""}`} />
+                  <CategoryButton category="Drink" explore_category explore_category_active={`${publicSelectedCategory === "Drink" ? "true" : ""}`} />
+                </div>
+                <StyledColorfulButton size="small" onClick={this.onSelectRandom}>Random</StyledColorfulButton>
               </div>
-              <StyledColorfulButton size="small" onClick={this.onSelectRandom}>Random</StyledColorfulButton>
             </div>
+            <SortByFilter />
           </div>
-          <div className='explore-search-col-2'>
+          <div className='explore-search-col-3'>
             <div onClick={() => {
                   resetUpdateRecipe();
                   if (userId !== 'no-user') {
@@ -142,7 +146,7 @@ class ExplorePage extends Component {
           <div className='explore-page-main-container'>
             {
               publicKeyword === 'random' ? 
-                <h5>Here's a random recipe picked from <span>{publicSelectedType}</span> category! <br/> 
+                <h5>Here's a random recipe picked from <span>{publicSelectedCategory}</span> category! <br/> 
                     Refresh (Crl+R) the page if you no longer want a random recipe.</h5>
               : null
             }

@@ -27,14 +27,19 @@ export const selectSinglePublicRecipeFailed = createSelector(
   allPublicRecipes => allPublicRecipes.requestSinglePublicRecipeError
 )
 
-export const selectPublicSelectedType = createSelector(
+export const selectPublicSelectedCategory = createSelector(
   [selectPublicRecipes],
-  allPublicRecipes => allPublicRecipes.selectedType
+  allPublicRecipes => allPublicRecipes.publicSelectedCategory
 )
 
 export const selectPublicFilterType = createSelector(
   [selectPublicRecipes],
   allPublicRecipes => allPublicRecipes.publicSearchFilter
+)
+
+export const selectPublicSortbyFilter = createSelector(
+  [selectPublicRecipes],
+  allPublicRecipes => allPublicRecipes.publicSortbyFilter
 )
 
 export const selectFilteredPublicRecipes = createSelector(

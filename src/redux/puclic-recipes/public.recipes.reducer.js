@@ -9,8 +9,9 @@ const INITIAL_STATE = {
   singlePublicRecipe: {},
   requestSinglePublicRecipeError: '',
   publicSearchFilter: 'byTitle',
+  publicSortbyFilter: 'Sort By',
   filteredPublicRecipes: [],
-  selectedType: 'All',
+  publicSelectedCategory: 'All',
   currentPage: 1,
   totalPages: 0,
   publicKeyword: ''
@@ -60,10 +61,16 @@ const requestPublicRecipesReducer = (state = INITIAL_STATE, action={}) => {
         ...state,
         publicSearchFilter: action.payload
       }
+    case PublicRecipesTypes.SET_PUBLIC_SORTBY_FILTER:
+      return {
+        ...state,
+        publicSortbyFilter: action.payload
+      }
     case PublicRecipesTypes.REQUEST_FILTERED_PUBLIC_RECIPES:
       return {
         ...state,
         filteredPublicRecipes: filterPublicRecipes(action.payload, state.publicRecipes, state.publicSearchFilter),
+        currentPage: 1,
         publicKeyword: action.payload
       }
     case PublicRecipesTypes.RESET_FILTERED_PUBLIC_RECIPES:
@@ -74,7 +81,7 @@ const requestPublicRecipesReducer = (state = INITIAL_STATE, action={}) => {
     case PublicRecipesTypes.SET_PUBLIC_SELECTED_TYPE:
       return {
         ...state,
-        selectedType: action.payload
+        publicSelectedCategory: action.payload
       }
     case PublicRecipesTypes.RESET_PUBLIC_KEYWORD: 
       return {

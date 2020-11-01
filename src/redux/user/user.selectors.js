@@ -22,6 +22,11 @@ export const selectSignupErrormsg = createSelector(
   user => user.signupErrormsg
 )
 
+export const selectCurrentUser = createSelector(
+  [selectUser],
+  user => user.currentUser.user
+)
+
 export const selectUserName = createSelector(
   [selectUser],
   user => user.currentUser.user.name

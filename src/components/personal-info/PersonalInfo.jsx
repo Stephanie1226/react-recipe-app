@@ -19,10 +19,8 @@ import {
   onEditProfile 
 } from '../../redux/user/user.actions';
 import { 
-  selectUserName, 
-  selectUserEmail,
+  selectCurrentUser,
   selectUserToken, 
-  selectUserAvatar,
   selectUploadProfilePicPending,
   selectUploadProfilePicSuccess,
   selectUploadProfilePicError,
@@ -31,9 +29,7 @@ import {
 } from '../../redux/user/user.selectors';
 
 const mapStateToProps = createStructuredSelector({
-  userName: selectUserName,
-  userEmail: selectUserEmail,
-  userAvatar: selectUserAvatar,
+  userInfo: selectCurrentUser,
   userToken: selectUserToken,
   uploadProfilePicPending: selectUploadProfilePicPending,
   uploadProfilePicSuccess: selectUploadProfilePicSuccess,
@@ -78,12 +74,12 @@ class PersonalInfo extends Component {
   }
 
   render () {
-    const { userName, userEmail, userAvatar, editStatus, uploadProfilePicPending, deleteProfilePicPending } = this.props;
+    const { userInfo, editStatus, uploadProfilePicPending, deleteProfilePicPending } = this.props;
     return (
       <div className='personal-info'>
         <div className='user-avatar-container'>
         {
-          userAvatar ? <img alt='userimg' src={`data:image/png;base64,${userAvatar}`} /> 
+          userInfo.avatar ? <img alt='userimg' src={`data:image/png;base64,${userInfo.avatar}`} /> 
           : <img alt='default_userimg' src={require('./user_default.png')} />
         }
         </div>
@@ -118,12 +114,13 @@ class PersonalInfo extends Component {
             editStatus ? <UpdatePersonalInfo /> :
             <div className='name-and-email'>
               <div className='name-edit-icon'>
-                <h4>{userName}</h4>
+                <h4>{userInfo.name}</h4>
                 <IconButton aria-label="edit-personal-info" onClick={this.onEdit}>
                   <EditRoundedIcon fontSize="small" />
                 </IconButton>
               </div>
-              <h6>{userEmail}</h6>
+              <h6>@{userInfo.userId}</h6>
+              <h6>{userInfo.email}</h6>
             </div>
           }
         </div>

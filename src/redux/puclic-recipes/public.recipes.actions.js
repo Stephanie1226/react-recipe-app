@@ -1,9 +1,10 @@
 import { apiCall } from '../../api/api';
 import PublicRecipesTypes from './public.recipes.types';
 
-export const requestAllPublicRecipes = (url_to_match) => (dispatch) => {
+export const requestAllPublicRecipes = (query) => (dispatch) => {
+  console.log(query)
   dispatch({ type: PublicRecipesTypes.REQUEST_ALL_PUBLIC_RECIPES_PENGING })
-  apiCall(`https://chieh-recipe-manager.herokuapp.com/recipes/${url_to_match}`,
+  apiCall(`https://chieh-recipe-manager.herokuapp.com/recipes/public${query}`,
     {
       method: 'GET',
       headers: {
@@ -34,6 +35,11 @@ export const requestFilteredPublicRecipes = (keyword) => ({
 
 export const setPublicSearchFilter = (filter) => ({
   type: PublicRecipesTypes.SET_PUBLIC_SEARCH_FILTER,
+  payload: filter
+})
+
+export const setPublicSortbyFilter = (filter) => ({
+  type: PublicRecipesTypes.SET_PUBLIC_SORTBY_FILTER,
   payload: filter
 })
 
