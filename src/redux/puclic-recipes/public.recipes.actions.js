@@ -15,7 +15,6 @@ export const requestAllPublicRecipes = (url_to_match) => (dispatch) => {
 }
 
 export const requestPublicRecipeById = (recipe_id) => (dispatch) => {
-  console.log('code pass hereeeeeeeeee')
   dispatch({ type: PublicRecipesTypes.REQUEST_SINGLE_PUBLIC_RECIPE_PENDING })
   apiCall(`https://chieh-recipe-manager.herokuapp.com/recipes/public/${recipe_id}`,
     {
