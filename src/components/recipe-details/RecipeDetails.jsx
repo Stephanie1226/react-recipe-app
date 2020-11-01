@@ -16,17 +16,12 @@ import { Stepper, Step, StepLabel, StepContent, Typography } from "@material-ui/
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectUserId } from '../../redux/user/user.selectors';
+import { selectSinglePublicRecipe } from '../../redux/puclic-recipes/public.recipes.selectors';
 import { setToBeUpdatedRecipe, resetUpdateRecipe } from '../../redux/update-recipe/update.recipe.actions';
 import { setOnEditRecipeForPhoto } from '../../redux/create-recipe/create.recipe.actions'
 
-import { 
-  selectSinglePublicRecipePending,
-  selectSinglePublicRecipe
-} from '../../redux/puclic-recipes/public.recipes.selectors';
-
 const mapStateToProps = createStructuredSelector({
   userId: selectUserId,
-  single_recipe_pending: selectSinglePublicRecipePending,
   single_recipe: selectSinglePublicRecipe,
 })
 
@@ -36,7 +31,7 @@ const mapDispatchToProps = (dispatch) => ({
   setOnEditRecipeForPhoto: (data) => dispatch(setOnEditRecipeForPhoto(data))
 });
 
-const RecipeDetails = ({ recipe, history, userId, setToBeUpdatedRecipe, resetUpdateRecipe, setOnEditRecipeForPhoto, single_recipe_pending, single_recipe }) => {
+const RecipeDetails = ({ recipe, history, userId, setToBeUpdatedRecipe, resetUpdateRecipe, setOnEditRecipeForPhoto, single_recipe }) => {
   if (recipe) {
     var { img, title, preparation, meal, dessert, drink, total_time, cook_time, servings, ingredients, steps, owner } = recipe;
     var recipe_public = recipe.public;

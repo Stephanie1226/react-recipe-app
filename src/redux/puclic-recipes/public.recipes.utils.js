@@ -1,9 +1,3 @@
-export const addUpTotalTime = (publicRecipes) => {
-  return publicRecipes.map(
-    publicRecipe => ({...publicRecipe, total_time: parseInt(publicRecipe.preparation)+parseInt(publicRecipe.cook_time)})
-  )
-}
-
 export const filterPublicRecipes = (keyword, publicRecipes, searchFilter) => {
   if (keyword === 'random') {
     return [publicRecipes[Math.floor(Math.random()*publicRecipes.length)]];

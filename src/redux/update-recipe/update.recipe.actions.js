@@ -21,9 +21,10 @@ export const updateRecipe = (recipeID, userToken, title, prep_time, cook_time, d
     },
     body: JSON.stringify({
       title: title,
-      preparation: prep_time,
-      cook_time: cook_time,
-      servings: servings,
+      preparation: parseInt(prep_time),
+      cook_time: parseInt(cook_time),
+      total_time: parseInt(prep_time) + parseInt(cook_time),
+      servings: parseInt(servings),
       dessert: dessert,
       meal: meal,
       drink: drink,

@@ -1,5 +1,5 @@
 import PublicRecipesTypes from './public.recipes.types';
-import { addUpTotalTime, filterPublicRecipes } from './public.recipes.utils'
+import { filterPublicRecipes } from './public.recipes.utils'
 
 const INITIAL_STATE = {
   isPending: false,
@@ -26,7 +26,7 @@ const requestPublicRecipesReducer = (state = INITIAL_STATE, action={}) => {
     case PublicRecipesTypes.REQUEST_ALL_PUBLIC_RECIPES_SUCCESS:
       return {
         ...state,
-        publicRecipes: addUpTotalTime(action.payload),
+        publicRecipes: action.payload,
         isPending: !state.isPending
       }
     case PublicRecipesTypes.REQUEST_ALL_PUBLIC_RECIPES_FAILED:
