@@ -5,12 +5,32 @@
   transition:transform 0.25s ease-out;
   background: #FFFFFF;
   box-shadow: 3px 4px 4px rgba(153, 153, 153, 0.25);
-  margin: 25px;
+  margin: 25px 0;
   border-radius: 3px;
 
-  @media (min-width: 400px) {
-    width: 25%;
-    min-width: 350px;
+  @media (min-width: 951px) {
+    width: 350px;
+    margin: 25px 25px;
+  }
+
+  @media (min-width: 700px) and (max-width: 950px) {
+    width: 45%;
+  }
+
+  @media (min-width: 669px) and (max-width: 700px) {
+    width: 290px;
+  }
+
+  @media (min-width: 630px) and (max-width: 669px) {
+    width: 47%;
+  }
+
+  @media (min-width: 400px) and (max-width: 629px) {
+    width: 350px;
+  }
+
+  @media (max-width: 400px) {
+    width: 85%;
   }
 
   &:hover, &:focus {
