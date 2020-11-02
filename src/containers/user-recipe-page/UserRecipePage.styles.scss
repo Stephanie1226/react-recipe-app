@@ -11,13 +11,22 @@
     min-width: 350px;
     padding-top: 10px;
 
+    @media (max-width: 800px) {
+      width: 95vw;
+    }
+
     .user-searchbar-container {
-      width: 87%;
+      width: 85%;
       margin: 0 auto 3% auto;
 
-      @media (max-width: 670px) {
+      @media (min-width: 400px) and (max-width: 670px) {
         width: 95%;
       }
+
+      @media (max-width: 400px) {
+        width: 80%;
+      }
+
 
       h1{
         font-family: Frank Ruhl Libre;
@@ -32,12 +41,21 @@
 
         .searchbar-user {
           width: 65%;
+
+          @media (max-width: 930px) {
+            margin-bottom: 5%;
+          }
+
+          @media (max-width: 400px) {
+            margin-bottom: 5%;
+            width: 100%;
+          }
         }
   
         .create-recipe-button {
           margin-left: 20px;
           vertical-align: middle;
-          margin-bottom: 20px;
+          margin-bottom: 20px;  
   
           span {
             font-family: 'Cabin', sans-serif;
@@ -45,6 +63,10 @@
           }
         }
       } 
+    }
+
+    .user-recipe-overview {
+      padding: 0 5%;
     }
 
     .user-pagination-container {    
