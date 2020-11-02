@@ -26,14 +26,15 @@ export const singinUser = (email, password) => (dispatch) => {
 		.catch(error => dispatch({ type: UserActionTypes.SIGN_IN_USER_FAILED, payload: error }))
 }
 
-export const signupNewUser = (displayName, email, password) => (dispatch) => {
+export const signupNewUser = (displayName, userId, email, password) => (dispatch) => {
 	dispatch({ type: UserActionTypes.SIGNUP_NEW_USER_PENDING })
 	fetch('https://chieh-recipe-manager.herokuapp.com/users',
 		{
 			method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name: displayName,
+				name: displayName,
+				userId: userId,
         email: email,
         password: password
       })

@@ -66,6 +66,11 @@ const requestPublicRecipesReducer = (state = INITIAL_STATE, action={}) => {
         ...state,
         publicSortbyFilter: action.payload
       }
+    case PublicRecipesTypes.RESET_PUBLIC_SORTBY_FILTER:
+      return {
+        ...state,
+        publicSortbyFilter: 'Sort By'
+      }
     case PublicRecipesTypes.REQUEST_FILTERED_PUBLIC_RECIPES:
       return {
         ...state,

@@ -58,6 +58,7 @@ const requestUserRecipesReducer = (state = INITIAL_STATE, action={}) => {
       return {
         ...state,
         filteredUserRecipes: filterUserRecipes(action.payload, state.userRecipes),
+        userCurrentPage: 1,
         userKeyword: action.payload
       }
     case UserRecipesTypes.RESET_FILTERED_USER_RECIPES_AND_KEYWORDS:

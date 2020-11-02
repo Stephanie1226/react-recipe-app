@@ -43,6 +43,10 @@ export const setPublicSortbyFilter = (filter) => ({
   payload: filter
 })
 
+export const resetPublicSortbyFilter = () => ({
+  type: PublicRecipesTypes.RESET_PUBLIC_SORTBY_FILTER
+})
+
 export const resetFilteredPublicRecipes = () => ({
   type: PublicRecipesTypes.RESET_FILTERED_PUBLIC_RECIPES
 })

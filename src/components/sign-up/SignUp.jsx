@@ -17,7 +17,7 @@ const mapStateToProps = createStructuredSelector({
 })
 
 const mapDispatchToProps = dispatch => ({
-  signupNewUser: (displayName, email, password) => dispatch(signupNewUser(displayName, email, password))
+  signupNewUser: (displayName, userId, email, password) => dispatch(signupNewUser(displayName, userId, email, password))
 })
 
 class SignUp extends Component {
@@ -25,21 +25,24 @@ class SignUp extends Component {
     super();
     this.state = {
       displayName: '',
+      userId: '',
       email: '',
       password: '',
       confirmPassword: '',
-      signupPwdNotMatch: ''
+      signupFirstCheckErr: ''
     }
   }
 
   handleSubmit = event => {
     event.preventDefault();
     if (this.state.password !== this.state.confirmPassword) {
-      return this.setState({ signupPwdNotMatch: 'Confirm Password doesn\'t match' })
-    } else {
-      this.setState({ signupPwdNotMatch: '' });
-      this.props.signupNewUser(this.state.displayName, this.state.email, this.state.password)
+      return this.setState({ signupFirstCheckErr: 'Confirm Password doesn\'t match' })
+    } 
+    if (!this.state.userId.match("^[a-zA-Z0-9]+$")) {
+      return this.setState({ signupFirstCheckErr: 'User ID cannot include characters other than letters and digits.' })
     }
+    this.setState({ signupFirstCheckErr: '' });
+    this.props.signupNewUser(this.state.displayName, this.state.userId, this.state.email, this.state.password)
   }
 
   handleChange = event => {
@@ -49,7 +52,7 @@ class SignUp extends Component {
 
   render () {
     const { signupError } = this.props;
-    const { displayName, email, password, confirmPassword, signupPwdNotMatch } = this.state;
+    const { displayName, userId, email, password, confirmPassword, signupFirstCheckErr } = this.state;
     return (
       <div className='signup-container'>
         <form className='sign-up-form' onSubmit={this.handleSubmit} >
@@ -60,6 +63,14 @@ class SignUp extends Component {
             label='Display Name'
             handleChange={this.handleChange} 
             value={displayName} 
+            required
+          />
+          <FormInput
+            type='text'
+            name='userId'
+            label='User ID (Letters and Numbers only)'
+            handleChange={this.handleChange} 
+            value={userId} 
             required
           />
           <FormInput
@@ -94,7 +105,7 @@ class SignUp extends Component {
             this.props.signupPending ? <ButtonPending /> : null
           }
           {
-            signupPwdNotMatch ? <h6>{signupPwdNotMatch}</h6> 
+            signupFirstCheckErr ? <h6>{signupFirstCheckErr}</h6> 
               : signupError ? <h6>{signupError}</h6> : <h6>Welcome to join us!</h6>
           }
         </form>

@@ -7,6 +7,7 @@ import {
   requestAllPublicRecipes, 
   resetFilteredPublicRecipes,
   resetPublicKeyword,
+  resetPublicSortbyFilter,
   setPublicSelectedType,
   setCurrentPage
 } from '../../redux/puclic-recipes/public.recipes.actions';
@@ -26,6 +27,7 @@ const mapDispatchToProps = (dispatch) => ({
   requestAllPublicRecipes: (url_to_match) => dispatch(requestAllPublicRecipes(url_to_match)),
   resetFilteredPublicRecipes: () => dispatch(resetFilteredPublicRecipes()),
   resetPublicKeyword: () => dispatch(resetPublicKeyword()),
+  resetPublicSortbyFilter: () => dispatch(resetPublicSortbyFilter()),
   setPublicSelectedType: (selectedType) => dispatch(setPublicSelectedType(selectedType)),
   setPublicCurrentPage: (data) => dispatch(setCurrentPage(data)),
   requestAllUserRecipes: (token, category) => dispatch(requestAllUserRecipes(token, category)),
@@ -44,6 +46,7 @@ class CategoryButton extends Component {
   handleExploreCategoryChange = event => {
     this.props.setPublicSelectedType(event.currentTarget.value);
     this.props.resetPublicKeyword();
+    this.props.resetPublicSortbyFilter();
     this.props.resetFilteredPublicRecipes();
     this.props.setPublicCurrentPage(1);
     if (event.currentTarget.value === 'All') {
