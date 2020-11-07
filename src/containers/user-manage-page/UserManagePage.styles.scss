@@ -1,6 +1,18 @@
 .user-manage-page{
+  display: flex;
+  flex-direction: row;
   width: 100%;
+
   .user-manage-page-col-1{
     width: 30%;
+  }
+
+  .user-manage-page-col-2 {
+    width: 500px;
+    border: 1px solid #DBDEDA;
+    border-radius: 15px;
+    box-shadow: 3px 3px 10px #AEB1AC;
+    height: 400px;
+    margin-top: 10%;
   }
 }

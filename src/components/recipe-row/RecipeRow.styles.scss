@@ -1,0 +1,29 @@
+.recipe-row-container {
+  width: 100%;
+  display: flex;
+  min-height: 40px;
+  border-bottom: 1px solid darkgrey;
+  padding: 15px 0;
+  font-size: 17px;
+  align-items: center;
+
+  .recipe-row-title {
+    width: 35%;
+  }
+
+  .recipe-row-public {
+    width: 15%;
+  }
+
+  .recipe-row-prep {
+    width: 15%;
+  }
+
+  .recipe-row-cook {
+    width: 15%;
+  }
+
+  .recipe-row-edit {
+    width: 20%;
+  }
+}
