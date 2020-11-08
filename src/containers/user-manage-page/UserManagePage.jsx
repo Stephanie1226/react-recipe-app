@@ -2,7 +2,6 @@ import React from 'react';
 import './UserManagePage.styles.scss';
 
 import PersonalInfo from '../../components/personal-info/PersonalInfo';
-import RecipeTableScroll from '../../components/recipe-table-scroll/RecipeTableScroll';
 import RecipeTable from '../../components/recipe-table/RecipeTable';
 
 const UserManagePage = () => {

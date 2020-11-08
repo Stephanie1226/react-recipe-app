@@ -3,15 +3,26 @@ import './RecipeTable.styles.scss';
 
 import RecipeRow from '../recipe-row/RecipeRow';
 
-const RecipeTable = () => {
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { 
+  selectAllUserRecipes, 
+} from '../../redux/user-recipes/user.recipes.selectors';
+
+const mapStateToProps = createStructuredSelector({
+  userRecipes: selectAllUserRecipes
+});
+
+const RecipeTable = ({ userRecipes }) => {
   return (
     <div className='recipe-table-container'>
-      <RecipeRow />
-      <RecipeRow />
-      <RecipeRow />
-      <RecipeRow />
+      {
+        userRecipes && userRecipes.map(userRecipe => {
+          return <RecipeRow userRecipe={userRecipe} />
+        })
+      }
     </div>
   )
 }
 
-export default RecipeTable;
+export default connect(mapStateToProps)(RecipeTable);

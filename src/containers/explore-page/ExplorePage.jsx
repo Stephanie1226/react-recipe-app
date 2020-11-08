@@ -25,7 +25,7 @@ import {
   resetFilteredPublicRecipes,
   resetPublicKeyword,
   setCurrentPage, 
-  setTotalPage 
+  setTotalPage
 } from '../../redux/puclic-recipes/public.recipes.actions';
 import { 
   selectPublicRecipesPending,
