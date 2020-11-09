@@ -19,7 +19,7 @@ const persistConfig = {
 const UsersRecipePersistConfig = {
   key: 'usersRecipePersist',
   storage: storageSession,
-  whitelist: ['userRecipes', 'public_count', 'total_count']
+  whitelist: ['public_count', 'total_count']
 };
 
 const PublicRecipePersistConfig = {

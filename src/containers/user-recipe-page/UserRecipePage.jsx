@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
 import SearchBar from '../../components/searchbar/SearchBar';
 import PersonalInfo from '../../components/personal-info/PersonalInfo';
+import UserInfo from '../../components/user-info/UserInfo';
 import ErrorBoundry from '../../components/error-boundry/ErrorBoundry';
 import RecipesOverview from '../../components/recipes-overview/RecipesOverview';
 import EmptyMatch from '../../components/empty-match/EmptyMatch';
@@ -139,7 +140,7 @@ class UserRecipePage extends Component {
           }
         </div>
         <div className='personal-info-container' id='personal-info-full-screen'>
-          <PersonalInfo />
+          <UserInfo />
         </div>
       </div>
     );
