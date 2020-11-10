@@ -1,8 +1,6 @@
 import React from 'react';
 import './UserInfo.styles.scss';
 
-import Button from '@material-ui/core/Button';
-import { IconButton } from "@material-ui/core";
 import EditRoundedIcon from '@material-ui/icons/EditRounded';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -22,7 +20,7 @@ const mapStateToProps = createStructuredSelector({
   usersPublicCount: selectUsersPublicCount,
 })
 
-const UserInfo = ({ userInfo, usersTotalCount, usersPublicCount }) => {
+const UserInfo = ({ history, userInfo, usersTotalCount, usersPublicCount }) => {
   return (
     <div className='user-info-container'>
       <div className='user-info-avatar'>
@@ -51,10 +49,12 @@ const UserInfo = ({ userInfo, usersTotalCount, usersPublicCount }) => {
           <StatsCard />
         </div>
         <div className='user-info-edit-btn'>
-          <StyledGreyButton size="small" component="span" startIcon={<EditRoundedIcon />}> Edit Profile </StyledGreyButton>
+          <StyledGreyButton size="small" component="span" startIcon={<EditRoundedIcon />}
+            onClick={() => {history.push('/usermanage');}}> 
+            Edit Profile 
+          </StyledGreyButton>
         </div>
       </div>
-
     </div>
   );
 }
