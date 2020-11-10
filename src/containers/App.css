@@ -14,12 +14,12 @@ button:active, button:focus {
   z-index: 100;
 }
 
-@media screen and (min-width: 0px) and (max-width: 800px) {
+@media screen and (min-width: 0px) and (max-width: 953px) {
   #header-full-screen { display: none; } 
   #personal-info-full-screen { display: none; } 
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 954px) {
   #header-small-screen { display: none; } 
 }
 

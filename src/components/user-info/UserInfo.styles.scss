@@ -1,25 +1,24 @@
-.user-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  top:0%;
-  left:0%;
-  height:100%;
-  width:100%;
-  flex-wrap: nowrap;
+.user-info-container {
+  width: 308px;
+  height: 768px;
+  position: relative;
 
-  .user-avatar-container {
-    margin: 0% 0 6% 0;
+  .user-info-avatar {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     border: 2px solid #333333;
     border-radius: 50%;
-    width: 65%;
+    width: 208px;
     height: auto;
     overflow: hidden;
 
-    img {
+    position: absolute;
+    left: 50px;
+    right: 50px;
+    z-index: 1;
+
+    .user-info-avatar-img {
       max-width: 100%;
       max-height: 100%;
       display: block;
@@ -29,19 +28,85 @@
   .user-detailed-info {
     word-wrap: break-word;
     text-align: center;
-    width: 90%;
-    margin-bottom: 1vw;
+    width: 308px;
+    height: 650px;
+    background-color: #ffffff;
+    box-shadow: 3px 4px 4px rgba(153, 153, 153, 0.25);
+    border-radius: 5px; 
 
-    .name-and-email {
-      h4 {
-        display: inline;
-        font-family: 'Poppins', sans-serif;
-        margin-bottom: 0px;
-        background: linear-gradient(180deg, rgba(255,255,255,0) 70%, #FBDD8A 70%);
+    position: absolute;
+    top: 118px;
+    z-index: 0;
+
+    h4 {
+      position: relative;
+      top: 115px;
+      display: inline;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 0px;
+      background: linear-gradient(180deg, rgba(255,255,255,0) 70%, #FBDD8A 70%);
+    }
+    h6 {
+      position: relative;
+      top: 130px;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .user-info-stats {
+      position: relative;
+      left: 38px;
+      right: 38px;
+      top: 150px;
+      width: 232px;
+      height: 80px;
+      background: #F2F2F2;
+      border-radius: 5px; 
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      .user-info-stats-public, .user-info-stats-private {
+        display: flex;
+        flex-direction: column;
+        margin: 0 25px;
+
+        h5 {
+          font-size: 25px;
+          margin-bottom: 3px;
+        }
+        span {
+          font-size: 16px;
+          color: #979797;
+        }
       }
-      h6 {
-        font-family: 'Roboto', sans-serif;
-      }
+    }
+
+    .user-info-badge {
+      position: relative;
+      top: 170px;
+      left: 122px;
+      right: 122px;
+      width: 64px;
+      height: 64px;
+      background: #F2F2F2;
+      border-radius: 180px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .user-info-stats-slider {
+      position: relative;
+      top: 120px;
+      left: 38px;
+      right: 38px;
+    }
+
+    .user-info-edit-btn {
+      position: relative;
+      top: 145px;
     }
   }
 }

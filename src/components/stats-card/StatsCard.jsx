@@ -3,7 +3,7 @@ import './StatsCard.scss';
 
 import RecipeSlider from '../recipe-slider/RecipeSlider';
 
-const StatsCard = ({ usersTotalCount, usersPublicCount }) => {
+const StatsCard = () => {
   return (
     <div className='stats-container'>
       <h5>Your records:</h5>

@@ -6,7 +6,7 @@ const StyledGreyButton = withStyles({
     background: '#E0E0E0',
     borderRadius: 3,
     border: 0,
-    width: "95px",
+    width: "230px",
     color: 'black',
   },
   label: {
