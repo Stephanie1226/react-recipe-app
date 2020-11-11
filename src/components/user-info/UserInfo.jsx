@@ -20,9 +20,9 @@ const mapStateToProps = createStructuredSelector({
   usersPublicCount: selectUsersPublicCount,
 })
 
-const UserInfo = ({ history, userInfo, usersTotalCount, usersPublicCount }) => {
+const UserInfo = ({ history, userInfo, usersTotalCount, usersPublicCount, v1, v2 }) => {
   return (
-    <div className='user-info-container'>
+    <div className={`user-info-container ${v1 ? 'v1' : 'null'} ${v2 ? 'v2' : null}` }>
       <div className='user-info-avatar'>
       {
         userInfo.avatar ? <img className='user-info-avatar-img' alt='userimg' src={`data:image/png;base64,${userInfo.avatar}`} /> 
@@ -46,7 +46,7 @@ const UserInfo = ({ history, userInfo, usersTotalCount, usersPublicCount }) => {
           <FontAwesomeIcon style={{color:"#C4C4C4"}} size="2x" icon={faMedal} />
         </div>
         <div className='user-info-stats-slider'>
-          <StatsCard />
+          <StatsCard version={v1 ? 'v1' : 'v2'} />
         </div>
         <div className='user-info-edit-btn'>
           <StyledGreyButton size="small" component="span" startIcon={<EditRoundedIcon />}

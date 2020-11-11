@@ -3,6 +3,36 @@
   height: 768px;
   position: relative;
 
+  &.v1 {
+    .user-detailed-info {
+      background-color: #ffffff;
+      box-shadow: 3px 4px 4px rgba(153, 153, 153, 0.25);
+
+      .user-info-stats {
+        background: #F2F2F2;
+      }
+  
+      .user-info-badge {
+        background: #F2F2F2;
+      }
+    }
+  }
+
+  &.v2 {
+    .user-detailed-info {
+      background-color: #F5F5F5;
+      border: 1px solid #E5E5E5;
+
+      .user-info-stats {
+        background: #ffffff;
+      }
+  
+      .user-info-badge {
+        background: #ffffff;
+      }
+    }
+  }
+
   .user-info-avatar {
     background-size: cover;
     background-repeat: no-repeat;
@@ -30,9 +60,6 @@
     text-align: center;
     width: 308px;
     height: 650px;
-    background-color: #ffffff;
-    border: 1px solid #f2f2f2;
-    box-shadow: 3px 4px 4px rgba(153, 153, 153, 0.25);
     border-radius: 5px; 
 
     position: absolute;
@@ -60,7 +87,6 @@
       top: 150px;
       width: 232px;
       height: 80px;
-      background: #F2F2F2;
       border-radius: 5px; 
       display: flex;
       flex-direction: row;
@@ -90,7 +116,6 @@
       right: 122px;
       width: 64px;
       height: 64px;
-      background: #F2F2F2;
       border-radius: 180px;
       display: flex;
       justify-content: center;

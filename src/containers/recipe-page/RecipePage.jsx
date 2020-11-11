@@ -57,7 +57,7 @@ class RecipePage extends Component {
         {
           this.props.userId !== 'no-user' ?
           <div className='personal-info-box' id='personal-info-full-screen'>
-            <UserInfo />
+            <UserInfo v2 />
           </div>
           : null
         }

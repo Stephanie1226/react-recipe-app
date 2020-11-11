@@ -1,9 +1,15 @@
 .stats-container {
-  background: #F2F2F2;
   width: 232px;
   margin-top: 20px;
   padding: 20px 20px;
   border-radius: 5px;
+
+  &.v1 {
+    background: #F2F2F2;
+  }
+  &.v2 {
+    background: #ffffff;
+  }
 
   h5 {
     margin-top: 13px;
