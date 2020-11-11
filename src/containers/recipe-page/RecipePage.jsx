@@ -3,7 +3,7 @@ import './RecipePage.styles.scss';
 
 import Loading from '../../components/loading/Loading';
 import RecipeDetails from '../../components/recipe-details/RecipeDetails';
-import PersonalInfo from '../../components/personal-info/PersonalInfo';
+import UserInfo from '../../components/user-info/UserInfo';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -57,7 +57,7 @@ class RecipePage extends Component {
         {
           this.props.userId !== 'no-user' ?
           <div className='personal-info-box' id='personal-info-full-screen'>
-            <PersonalInfo />
+            <UserInfo />
           </div>
           : null
         }
