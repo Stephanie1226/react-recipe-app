@@ -6,24 +6,25 @@
   padding: 15px 0;
   font-size: 17px;
   align-items: center;
+  justify-content: center;
 
   .recipe-row-title {
-    width: 35%;
+    width: 47%;
   }
 
   .recipe-row-public {
+    width: 8%;
+  }
+
+  .recipe-row-createdat {
     width: 15%;
   }
 
-  .recipe-row-prep {
-    width: 15%;
-  }
-
-  .recipe-row-cook {
+  .recipe-row-updatedat {
     width: 15%;
   }
 
   .recipe-row-edit {
-    width: 20%;
+    width: 11%;
   }
 }

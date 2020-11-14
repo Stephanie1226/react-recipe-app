@@ -18,11 +18,11 @@ const RecipeTable = ({ userRecipes }) => {
     <div className='recipe-table-container'>
       {
         userRecipes && userRecipes.map(userRecipe => {
-          return <RecipeRow userRecipe={userRecipe} />
+          return <RecipeRow key={userRecipe._id} userRecipe={userRecipe} />
         })
       }
     </div>
-  )
+  );
 }
 
 export default connect(mapStateToProps)(RecipeTable);

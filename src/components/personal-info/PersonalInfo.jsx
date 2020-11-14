@@ -72,7 +72,7 @@ class PersonalInfo extends Component {
       this.props.onEditProfile();
     }
   }
-
+  
   render () {
     const { userInfo, editStatus, uploadProfilePicPending, deleteProfilePicPending } = this.props;
     return (
