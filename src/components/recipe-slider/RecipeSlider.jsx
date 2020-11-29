@@ -57,6 +57,7 @@ const RecipeSlider = ({ usersTotalCount, usersPublicCount }) => {
           min={0} 
           max={ usersPublicCount > 15 ? usersPublicCount + 5 : 20} 
           marks 
+          valueLabelDisplay="on"
         />
         <span style={{marginLeft:'8px'}}>{usersPublicCount}</span>
       </div>
@@ -68,6 +69,7 @@ const RecipeSlider = ({ usersTotalCount, usersPublicCount }) => {
           min={0} 
           max={ (usersTotalCount - usersPublicCount) > 15 ? (usersTotalCount - usersPublicCount) + 5 : 20} 
           marks 
+          valueLabelDisplay="on"
         />
         <span style={{marginLeft:'8px'}}>{usersTotalCount - usersPublicCount}</span>
       </div>

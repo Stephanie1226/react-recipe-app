@@ -3,9 +3,9 @@ import Button from '@material-ui/core/Button';
 
 const StyledGreyButton = withStyles({
   root: {
-    background: '#E0E0E0',
+    background: '#ffffff',
     borderRadius: 3,
-    border: 0,
+    border: '2px solid #2A356C',
     width: "230px",
     color: 'black',
   },

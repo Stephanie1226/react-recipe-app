@@ -3,36 +3,6 @@
   height: 768px;
   position: relative;
 
-  &.v1 {
-    .user-detailed-info {
-      background-color: #ffffff;
-      box-shadow: 3px 4px 4px rgba(153, 153, 153, 0.25);
-
-      .user-info-stats {
-        background: #F2F2F2;
-      }
-  
-      .user-info-badge {
-        background: #F2F2F2;
-      }
-    }
-  }
-
-  &.v2 {
-    .user-detailed-info {
-      background-color: #F5F5F5;
-      border: 1px solid #E5E5E5;
-
-      .user-info-stats {
-        background: #ffffff;
-      }
-  
-      .user-info-badge {
-        background: #ffffff;
-      }
-    }
-  }
-
   .user-info-avatar {
     background-size: cover;
     background-repeat: no-repeat;
@@ -46,6 +16,7 @@
     position: absolute;
     left: 50px;
     right: 50px;
+    top: 40px;
     z-index: 1;
 
     .user-info-avatar-img {
@@ -59,16 +30,18 @@
     word-wrap: break-word;
     text-align: center;
     width: 308px;
-    height: 650px;
+    height: 890px;
     border-radius: 5px; 
 
     position: absolute;
-    top: 118px;
     z-index: 0;
+
+    background-color: #ffffff;
+    border: 2px solid #F3F3F3;
 
     h4 {
       position: relative;
-      top: 115px;
+      top: 275px;
       display: inline;
       font-family: 'Poppins', sans-serif;
       margin-bottom: 0px;
@@ -76,7 +49,7 @@
     }
     h6 {
       position: relative;
-      top: 130px;
+      top: 290px;
       font-family: 'Roboto', sans-serif;
     }
 
@@ -84,7 +57,7 @@
       position: relative;
       left: 38px;
       right: 38px;
-      top: 150px;
+      top: 310px;
       width: 232px;
       height: 80px;
       border-radius: 5px; 
@@ -92,6 +65,9 @@
       flex-direction: row;
       justify-content: center;
       align-items: center;
+
+      background: #FFFFFF;
+      border: 2px solid #2A356C;
 
       .user-info-stats-public, .user-info-stats-private {
         display: flex;
@@ -111,7 +87,7 @@
 
     .user-info-badge {
       position: relative;
-      top: 170px;
+      top: 330px;
       left: 122px;
       right: 122px;
       width: 64px;
@@ -121,18 +97,20 @@
       justify-content: center;
       align-items: center;
       z-index: 1;
+      background: #ffffff;
+      border-top: 2px solid #2A356C;
     }
 
     .user-info-stats-slider {
       position: relative;
-      top: 120px;
+      top: 280px;
       left: 38px;
       right: 38px;
     }
 
     .user-info-edit-btn {
       position: relative;
-      top: 145px;
+      top: 305px;
     }
   }
 }

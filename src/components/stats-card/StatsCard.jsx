@@ -5,7 +5,7 @@ import RecipeSlider from '../recipe-slider/RecipeSlider';
 
 const StatsCard = ({ version }) => {
   return (
-    <div className={`stats-container ${version === 'v1' ? 'v1' : 'v2'}`}>
+    <div className='stats-container'>
       <h5>Your records:</h5>
       <RecipeSlider />
     </div>
