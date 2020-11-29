@@ -47,7 +47,6 @@ const RecipeSlider = ({ usersTotalCount, usersPublicCount }) => {
           marks
           valueLabelDisplay="on"
         />
-        <span style={{marginLeft:'8px'}}>{usersTotalCount}</span>
       </div>
       <div className='count-slider-row'>
         <span style={{marginRight:'20px'}}>Public</span>
@@ -59,7 +58,6 @@ const RecipeSlider = ({ usersTotalCount, usersPublicCount }) => {
           marks 
           valueLabelDisplay="on"
         />
-        <span style={{marginLeft:'8px'}}>{usersPublicCount}</span>
       </div>
       <div className='count-slider-row'>
         <span style={{marginRight:'15px'}}>Private</span>
@@ -71,7 +69,6 @@ const RecipeSlider = ({ usersTotalCount, usersPublicCount }) => {
           marks 
           valueLabelDisplay="on"
         />
-        <span style={{marginLeft:'8px'}}>{usersTotalCount - usersPublicCount}</span>
       </div>
     </div>
   );

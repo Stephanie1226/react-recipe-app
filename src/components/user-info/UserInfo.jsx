@@ -43,7 +43,7 @@ const UserInfo = ({ history, userInfo, usersTotalCount, usersPublicCount, v1, v2
           </div>
         </div>
         <div className='user-info-badge'>
-          <FontAwesomeIcon style={{color:"#C4C4C4"}} size="2x" icon={faMedal} />
+          <FontAwesomeIcon style={{color:"#C4C4C4", position: "relative", top: "15px"}} size="2x" icon={faMedal} />
         </div>
         <div className='user-info-stats-slider'>
           <StatsCard version={v1 ? 'v1' : 'v2'} />
@@ -51,7 +51,7 @@ const UserInfo = ({ history, userInfo, usersTotalCount, usersPublicCount, v1, v2
         <div className='user-info-edit-btn'>
           <StyledGreyButton size="small" component="span" startIcon={<EditRoundedIcon />}
             onClick={() => {history.push('/usermanage');}}> 
-            Edit Profile 
+            Manage
           </StyledGreyButton>
         </div>
       </div>

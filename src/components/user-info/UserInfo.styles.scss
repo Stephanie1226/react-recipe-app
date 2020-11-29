@@ -91,26 +91,26 @@
       left: 122px;
       right: 122px;
       width: 64px;
-      height: 64px;
-      border-radius: 180px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      height: 34px;
+      border-top-left-radius: 34px;
+      border-top-right-radius: 34px;
+      border: 2px solid #2A356C;
+      border-bottom: 0;
+
       z-index: 1;
       background: #ffffff;
-      border-top: 2px solid #2A356C;
     }
 
     .user-info-stats-slider {
       position: relative;
-      top: 280px;
+      top: 308px;
       left: 38px;
       right: 38px;
     }
 
     .user-info-edit-btn {
       position: relative;
-      top: 305px;
+      top: 337px;
     }
   }
 }
