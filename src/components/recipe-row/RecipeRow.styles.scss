@@ -1,30 +1,36 @@
 .recipe-row-container {
-  width: 100%;
+  width: 95%;
   display: flex;
-  min-height: 40px;
-  border-bottom: 1px solid darkgrey;
-  padding: 15px 0;
-  font-size: 17px;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px solid darkgrey;
+  margin: 0 auto;
+  padding: 5px 0;
+  font-size: 17px;
+  
+  span {
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.02em;
+    color: #333333;
+  }
 
   .recipe-row-title {
-    width: 47%;
+    width: 50%;
   }
 
   .recipe-row-public {
-    width: 8%;
+    width: 10%;
   }
 
   .recipe-row-createdat {
-    width: 15%;
+    width: 14%;
   }
 
   .recipe-row-updatedat {
-    width: 15%;
+    width: 14%;
   }
 
   .recipe-row-edit {
-    width: 11%;
+    width: 10%;
   }
 }

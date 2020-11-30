@@ -1,5 +1,46 @@
 .recipe-table-container {
-  overflow-x: scroll;
-  overflow-y: scroll;
-  height: 500px;
+  width: 95%;
+  margin: 0 auto;
+
+  .recipe-table-titles {
+    height: 60px;
+    margin: 0 2%;
+    padding: 0 1%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid darkgrey;
+
+    span {
+      display: inline-block;
+    }
+
+    .table-title {
+      width: 51%;
+      padding-left: 3px;
+    }
+    
+    .table-public {
+      width: 10%;
+    }
+
+    .table-create {
+      width: 14%;
+    }
+
+    .table-update {
+      width: 14%;
+    }
+
+    .table-edit {
+      width: 10%;
+    }
+  }
+
+  .recipe-table-rows {
+    overflow-x: scroll;
+    overflow-y: scroll;
+    position: relative;
+    height: 440px;
+  }
+
 }

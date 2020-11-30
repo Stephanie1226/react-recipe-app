@@ -7,10 +7,7 @@ import RecipeTable from '../../components/recipe-table/RecipeTable';
 const UserManagePage = () => {
   return (
     <div className='user-manage-page'>
-      <div className='user-manage-page-col-1'>
-        <PersonalInfo />
-      </div>
-      <div className='user-manage-page-col-2'>
+      <div className='user-manage-page-main'>
         <RecipeTable />
       </div>
     </div>
@@ -18,3 +15,9 @@ const UserManagePage = () => {
 }
 
 export default UserManagePage;
+
+
+
+// <div className='user-manage-page-col-1'>
+// <PersonalInfo />
+// </div>
