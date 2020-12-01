@@ -2,9 +2,35 @@
   width: 100%;
   height: 750px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 
-  .user-manage-page-main {
+  .user-manage-tab {
+    @media screen and (min-width:1200px) {
+      width: 70%;
+    }
+
+    @media screen and (min-width: 0px) and (max-width: 1200px) {
+      width: 90%;
+    }
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    .manage-btn {
+      border: none;
+      background-color: inherit;
+      font-size: 26px;
+      font-family: Frank Ruhl Libre;
+      color: #333333;
+      cursor: pointer;
+      display: inline-block;
+    }
+  }
+
+  .user-manage-page-recipe {
     @media screen and (min-width:1200px) {
       width: 70%;
     }
@@ -14,7 +40,7 @@
     }
 
     height: 500px;
-    margin-top: 10%;
+    margin-top: 30px;
 
     background: #FFFFFF;
     border: 1px solid #C4C4C4;
