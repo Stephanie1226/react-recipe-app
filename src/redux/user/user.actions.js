@@ -147,3 +147,9 @@ export const updateUserInfo = (token, displayName, email) => (dispatch) => {
 	})
 	.catch(error => dispatch({ type: UserActionTypes.UPDATE_USER_INFO_FAILED, payload: error }))
 }
+
+
+export const changeManagePageStatus = (data) => ({
+	type: UserActionTypes.MANAGE_PAGE_STATUS,
+	payload: data
+});

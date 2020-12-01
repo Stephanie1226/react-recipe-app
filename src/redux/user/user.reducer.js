@@ -13,7 +13,8 @@ const INITIAL_STATE = {
 	onEditProfile: false,
 	editProfilePending: false,
 	editProfileErrormsg: '',
-	deleteProfilePicPending: false
+	deleteProfilePicPending: false,
+	managePageStatus: 'editProfile'
 }
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -119,6 +120,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
 				...state,
 				editProfilePending: false,
 				editProfileErrormsg: action.payload
+			}
+		case UserActionTypes.MANAGE_PAGE_STATUS:
+			return {
+				...state,
+				managePageStatus: action.payload
 			}
 		default:
 			return state;

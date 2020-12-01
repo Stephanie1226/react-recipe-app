@@ -57,9 +57,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 class UserRecipePage extends Component {
   componentDidMount() {
-    if (this.props.userRecipes.length === 0) {
-      this.props.initialRequestAllUserRecipes(this.props.token);
-    }
+    this.props.initialRequestAllUserRecipes(this.props.token);
   }
 
   componentDidUpdate(prevProps) {

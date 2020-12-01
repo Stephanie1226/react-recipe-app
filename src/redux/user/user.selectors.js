@@ -81,3 +81,8 @@ export const selectEditProfilePending = createSelector(
   [selectUser],
   user => user.editProfilePending
 )
+
+export const selectManagePageStatus = createSelector(
+  [selectUser],
+  user => user.managePageStatus
+)
