@@ -1,0 +1,97 @@
+.manage-edit-profile {
+  height: 500px;
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #C4C4C4;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(153, 153, 153, 0.25);
+  border-radius: 5px;
+
+  .manage-user-avatar {
+    width: 90%;
+    height: 200px;
+    margin: 5% auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .user-avatar-container {
+      margin: 0% 0 5% 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      border: 2px solid #333333;
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      overflow: hidden;
+  
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+      }
+    }
+
+    .avatar-art {
+      height: 30px;
+      width: 30px;
+      background: lightpink;
+    }
+  }
+
+  .profile-separate-line {
+    height: 2px;
+    width: 90%;
+    border-width: 0;
+    color: #2A356C;
+    background-color: #2A356C
+  }
+
+  .manage-edit-name, .manage-edit-email {
+    width: 90%;
+    height: 40px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .manage-edit-btn {
+      border: none;
+      background-color: inherit;
+      color: #2A356C;
+      cursor: pointer;
+      display: inline-block;
+      text-decoration:underline;
+      padding: 0 0;
+
+      &:hover {
+        color: #333333;
+      }
+    }
+
+    input {
+      border: 0;
+      outline: 0;
+      width: 270px;
+      border-bottom: 1px solid black;
+    }
+  }
+
+  .manage-edit-name {
+    margin: 3% auto 0 auto;
+    h4 {
+      font-family: Frank Ruhl Libre;
+    }
+  }
+
+  .manage-edit-email {
+    margin: 1% auto 0 auto;
+    span {
+      font-size: 18px;
+    }
+  }
+}

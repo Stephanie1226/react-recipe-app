@@ -80,7 +80,7 @@ class PersonalInfo extends Component {
         <div className='user-avatar-container'>
         {
           userInfo.avatar ? <img alt='userimg' src={`data:image/png;base64,${userInfo.avatar}`} /> 
-          : <img alt='default_userimg' src={require('./user_default.png')} />
+          : <img alt='default_userimg' src={require('../../assets/user_default.png')} />
         }
         </div>
         <div className='avatar-button-container'>

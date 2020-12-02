@@ -137,7 +137,7 @@ class UserRecipePage extends Component {
           }
         </div>
         <div className='personal-info-container' id='personal-info-full-screen'>
-          <UserInfo history={history} v1 />
+          <UserInfo history={history} />
         </div>
       </div>
     );

@@ -3,6 +3,7 @@ import './UserManagePage.styles.scss';
 
 //import PersonalInfo from '../../components/personal-info/PersonalInfo';
 import RecipeTable from '../../components/recipe-table/RecipeTable';
+import EditProfile from '../../components/edit-profile/EditProfile';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -38,7 +39,9 @@ class UserManagePage extends Component {
             <RecipeTable />
           </div>
           :
-          <div className='user-manage-page-profile'></div>
+          <div className='user-manage-page-profile'>
+            <EditProfile />
+          </div>
         }
       </div>
     )

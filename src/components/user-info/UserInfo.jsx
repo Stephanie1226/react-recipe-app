@@ -26,7 +26,7 @@ const UserInfo = ({ history, userInfo, usersTotalCount, usersPublicCount, v1, v2
       <div className='user-info-avatar'>
       {
         userInfo.avatar ? <img className='user-info-avatar-img' alt='userimg' src={`data:image/png;base64,${userInfo.avatar}`} /> 
-        : <img className='user-info-avatar-img' alt='default_userimg' src={require('./user_default.png')} />
+        : <img className='user-info-avatar-img' alt='default_userimg' src={require('../../assets/user_default.png')} />
       }
       </div>
       <div className='user-detailed-info'>
