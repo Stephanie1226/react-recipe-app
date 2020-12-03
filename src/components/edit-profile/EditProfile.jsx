@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './EditProfile.styles.scss';
 
-import { Button, CircularProgress} from "@material-ui/core";
+import { CircularProgress} from "@material-ui/core";
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -70,10 +70,13 @@ class EditProfile extends Component {
       <div className='manage-edit-profile'>
         <div className='manage-user-avatar'>
           <div className='user-avatar-container'>
-          {
-            userInfo.avatar ? <img alt='userimg' src={`data:image/png;base64,${userInfo.avatar}`} /> 
-            : <img alt='default_userimg' src={require('../../assets/user_default.png')} />
-          }
+            <div className='user-avatar-edit'>
+            {
+              userInfo.avatar ? <img alt='userimg' src={`data:image/png;base64,${userInfo.avatar}`} /> 
+              : <img alt='default_userimg' src={require('../../assets/user_default.png')} />
+            }
+            </div>
+            <span>@{userInfo.userId}</span>
           </div>
           <div className='avatar-art'></div>
         </div>
@@ -83,12 +86,12 @@ class EditProfile extends Component {
           <div className='manage-edit-name'>
             <input name="displayName" ype="text" id="edit-name" onChange={this.handleChange} defaultValue={userInfo.name} />
             <form onSubmit={this.handleSubmit}>
-              <Button variant="outlined" type="submit" size="small" style={{marginRight: "10px"}}
+              <button className='manage-edit manage-edit-submit' variant="outlined" type="submit" size="small" style={{marginRight: "10px"}}
                 disabled={editProfilePenging}>
                 {editProfilePenging && <CircularProgress size={15} />}
                 {!editProfilePenging && 'Submit'}
-              </Button>
-              <Button variant="outlined" type="button" size="small" onClick={this.handleEditNameCancel}>Cancel</Button>
+              </button>
+              <button className='manage-edit manage-edit-cancel' variant="outlined" type="button" size="small" onClick={this.handleEditNameCancel}>Cancel</button>
             </form>
           </div>
           :
@@ -102,17 +105,17 @@ class EditProfile extends Component {
           <div className='manage-edit-email'>
             <input name="email" type="text" id="edit-email" onChange={this.handleChange} defaultValue={userInfo.email} />
             <form onSubmit={this.handleSubmit}>
-              <Button variant="outlined" type="submit" size="small" style={{marginRight: "10px"}}
+              <button className='manage-edit manage-edit-submit' variant="outlined" type="submit" size="small" style={{marginRight: "10px"}}
                 disabled={editProfilePenging}>
                 {editProfilePenging && <CircularProgress size={15} />}
                 {!editProfilePenging && 'Submit'}
-              </Button>
-              <Button variant="outlined" type="button" size="small" onClick={this.handleEditEmailCancel}>Cancel</Button>
+              </button>
+              <button className='manage-edit manage-edit-cancel' variant="outlined" type="button" size="small" onClick={this.handleEditEmailCancel}>Cancel</button>
             </form>
           </div>
           :
           <div className='manage-edit-email'>
-            <span>{userInfo.email}</span>
+            <span className='user-email-display'>{userInfo.email}</span>
             <button className='manage-edit-btn' value='onEditEmail' onClick={this.handleEditClick}>Edit email</button>
           </div>
         }

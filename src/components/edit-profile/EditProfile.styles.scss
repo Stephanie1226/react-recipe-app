@@ -1,11 +1,11 @@
 .manage-edit-profile {
-  height: 500px;
   width: 100%;
   background: #FFFFFF;
   border: 1px solid #C4C4C4;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(153, 153, 153, 0.25);
   border-radius: 5px;
+  padding-bottom: 2%;
 
   .manage-user-avatar {
     width: 90%;
@@ -18,20 +18,33 @@
     align-items: center;
 
     .user-avatar-container {
-      margin: 0% 0 5% 0;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      border: 2px solid #333333;
-      border-radius: 50%;
-      width: 200px;
-      height: 200px;
-      overflow: hidden;
-  
-      img {
-        max-width: 100%;
-        max-height: 100%;
-        display: block;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      width: 310px;
+
+      .user-avatar-edit {
+        margin: 0% 0 5% 0;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        border: 2px solid #333333;
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+    
+        img {
+          max-width: 100%;
+          max-height: 100%;
+          display: block;
+        }
+      }
+
+      span {
+        font-family: 'Roboto', sans-serif;
       }
     }
 
@@ -58,6 +71,19 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
+
+    .manage-edit {
+      background: transparent;
+      border-radius: 3px;
+    }
+
+    .manage-edit-submit {
+      border: 2px solid #2A356C;
+    }
+
+    .manage-edit-cancel {
+      border: 2px solid #333333;
+    }
 
     .manage-edit-btn {
       border: none;
@@ -91,7 +117,8 @@
   .manage-edit-email {
     margin: 1% auto 0 auto;
     span {
-      font-size: 18px;
+      font-size: 17px;
+      font-family: 'Roboto', sans-serif;
     }
   }
 }
