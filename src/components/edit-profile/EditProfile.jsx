@@ -5,42 +5,67 @@ import { Button, CircularProgress} from "@material-ui/core";
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectCurrentUser } from '../../redux/user/user.selectors';
+import { onEditProfileName, onEditProfileEmail, updateUserInfo } from '../../redux/user/user.actions';
+import { 
+  selectUserToken,
+  selectCurrentUser, 
+  selectEditProfilePending,
+  selectEditNameStatus,
+  selectEditEmailStatus
+ } from '../../redux/user/user.selectors';
 
 const mapStateToProps = createStructuredSelector({
-  userInfo: selectCurrentUser
+  userToken: selectUserToken,
+  userInfo: selectCurrentUser,
+  editProfilePenging: selectEditProfilePending,
+  editNameStatus: selectEditNameStatus,
+  editEmailStatus: selectEditEmailStatus
 })
 
+const mapDispatchToProps = (dispatch) => ({
+  onEditProfileName: () => dispatch(onEditProfileName()),
+  onEditProfileEmail: () => dispatch(onEditProfileEmail()),
+  updateUserInfo: (token, displayName, email) => dispatch(updateUserInfo(token, displayName, email))
+});
+
 class EditProfile extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
-      onEditName: false,
-      onEditEmail: false
+      displayName: props.userInfo.name,
+      email: props.userInfo.email
     }
+  }
+
+  handleChange = event => {
+    const { value, name } = event.target;
+    this.setState({ [name]: value })
   }
 
   handleEditClick = event => {
     if (event.target.value === 'onEditName') {
-      this.setState({onEditName: true});
+      this.props.onEditProfileName();
     }
     if (event.target.value === 'onEditEmail') {
-      this.setState({onEditEmail: true});
+      this.props.onEditProfileEmail();
     }
   }
 
   handleEditNameCancel = event => {
-    this.setState({onEditName: false});
+    this.props.onEditProfileName();
   }
 
   handleEditEmailCancel = event => {
-    this.setState({onEditEmail: false});
+    this.props.onEditProfileEmail();
   }
 
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.updateUserInfo(this.props.userToken, this.state.displayName, this.state.email);
+  }
 
   render() {
-    const { onEditName, onEditEmail } = this.state;
-    const { userInfo } = this.props;
+    const { userInfo, editProfilePenging, editNameStatus, editEmailStatus } = this.props;
     return (
       <div className='manage-edit-profile'>
         <div className='manage-user-avatar'>
@@ -54,10 +79,17 @@ class EditProfile extends Component {
         </div>
         <hr className='profile-separate-line'></hr>
         {
-          onEditName ?
+          editNameStatus ?
           <div className='manage-edit-name'>
-            <input type="text" id="edit-name" onChange={this.handleChange} defaultValue={userInfo.name} />
-            <Button variant="outlined" type="button" size="small" onClick={this.handleEditNameCancel}>Cancel</Button>
+            <input name="displayName" ype="text" id="edit-name" onChange={this.handleChange} defaultValue={userInfo.name} />
+            <form onSubmit={this.handleSubmit}>
+              <Button variant="outlined" type="submit" size="small" style={{marginRight: "10px"}}
+                disabled={editProfilePenging}>
+                {editProfilePenging && <CircularProgress size={15} />}
+                {!editProfilePenging && 'Submit'}
+              </Button>
+              <Button variant="outlined" type="button" size="small" onClick={this.handleEditNameCancel}>Cancel</Button>
+            </form>
           </div>
           :
           <div className='manage-edit-name'>
@@ -66,10 +98,17 @@ class EditProfile extends Component {
           </div>
         }
         {
-          onEditEmail ?
+          editEmailStatus ?
           <div className='manage-edit-email'>
-            <input type="text" id="edit-email" onChange={this.handleChange} defaultValue={userInfo.email} />
-            <Button variant="outlined" type="button" size="small" onClick={this.handleEditEmailCancel}>Cancel</Button>
+            <input name="email" type="text" id="edit-email" onChange={this.handleChange} defaultValue={userInfo.email} />
+            <form onSubmit={this.handleSubmit}>
+              <Button variant="outlined" type="submit" size="small" style={{marginRight: "10px"}}
+                disabled={editProfilePenging}>
+                {editProfilePenging && <CircularProgress size={15} />}
+                {!editProfilePenging && 'Submit'}
+              </Button>
+              <Button variant="outlined" type="button" size="small" onClick={this.handleEditEmailCancel}>Cancel</Button>
+            </form>
           </div>
           :
           <div className='manage-edit-email'>
@@ -82,4 +121,4 @@ class EditProfile extends Component {
   }
 }
 
-export default connect(mapStateToProps)(EditProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(EditProfile);

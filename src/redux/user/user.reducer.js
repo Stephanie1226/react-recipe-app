@@ -10,7 +10,8 @@ const INITIAL_STATE = {
 	uploadProfilePicPending: false,
 	uploadProfilePicSuccessmsg: '',
 	uploadProfilePicErrormsg: '',
-	onEditProfile: false,
+	onEditProfileName: false,
+	onEditProfileEmail: false,
 	editProfilePending: false,
 	editProfileErrormsg: '',
 	deleteProfilePicPending: false,
@@ -97,10 +98,15 @@ const userReducer = (state = INITIAL_STATE, action) => {
 				currentUser: updateUser(state.currentUser, action.payload),
 				deleteProfilePicPending: false
 			}
-		case UserActionTypes.CHANGE_EDIT_STATUS:
+		case UserActionTypes.CHANGE_EDIT_NAME_STATUS:
 			return {
 				...state,
-				onEditProfile: !state.onEditProfile
+				onEditProfileName: !state.onEditProfileName
+			}
+		case UserActionTypes.CHANGE_EDIT_EMAIL_STATUS:
+			return {
+				...state,
+				onEditProfileEmail: !state.onEditProfileEmail
 			}
 		case UserActionTypes.UPDATE_USER_INFO_PENDING:
 			return {
@@ -112,7 +118,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
 				...state,
 				editProfilePending: false,
 				currentUser: updateUser(state.currentUser, action.payload),
-				onEditProfile: false,
+				onEditProfileName: false,
+				onEditProfileEmail: false,
 				editProfileErrormsg: ''
 			}
 		case UserActionTypes.UPDATE_USER_INFO_FAILED:

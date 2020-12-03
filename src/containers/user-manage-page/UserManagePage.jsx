@@ -49,9 +49,3 @@ class UserManagePage extends Component {
 }
 
 export default  connect(mapStateToProps, mapDispatchToProps)(UserManagePage);
-
-
-
-// <div className='user-manage-page-col-1'>
-// <PersonalInfo />
-// </div>

@@ -72,9 +72,14 @@ export const selectDeleteProfilePicPending = createSelector(
   user => user.deleteProfilePicPending
 )
 
-export const selectEditStatus = createSelector(
+export const selectEditNameStatus = createSelector(
   [selectUser],
-  user => user.onEditProfile
+  user => user.onEditProfileName
+)
+
+export const selectEditEmailStatus = createSelector(
+  [selectUser],
+  user => user.onEditProfileEmail
 )
 
 export const selectEditProfilePending = createSelector(

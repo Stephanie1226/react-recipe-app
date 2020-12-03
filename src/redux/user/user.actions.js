@@ -117,8 +117,6 @@ export const logoutCurrentUser = (token) => (dispatch) => {
 	.then(dispatch({ type: UserActionTypes.LOGOUT_CURRENT_USER, payload: {user: {_id: 'no-user'}}}))
 };
 
-export const onEditProfile = () => ({type: UserActionTypes.CHANGE_EDIT_STATUS});
-
 export const updateUserInfo = (token, displayName, email) => (dispatch) => {
 	dispatch({ type: UserActionTypes.UPDATE_USER_INFO_PENDING })
 	fetch('https://chieh-recipe-manager.herokuapp.com/users/updateme',
@@ -148,8 +146,11 @@ export const updateUserInfo = (token, displayName, email) => (dispatch) => {
 	.catch(error => dispatch({ type: UserActionTypes.UPDATE_USER_INFO_FAILED, payload: error }))
 }
 
-
 export const changeManagePageStatus = (data) => ({
 	type: UserActionTypes.MANAGE_PAGE_STATUS,
 	payload: data
 });
+
+export const onEditProfileName = () => ({type: UserActionTypes.CHANGE_EDIT_NAME_STATUS});
+
+export const onEditProfileEmail = () => ({type: UserActionTypes.CHANGE_EDIT_EMAIL_STATUS});
