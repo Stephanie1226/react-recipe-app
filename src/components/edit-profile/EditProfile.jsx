@@ -1,17 +1,28 @@
 import React, { Component } from 'react';
 import './EditProfile.styles.scss';
 
-import { CircularProgress} from "@material-ui/core";
+import { IconButton, CircularProgress} from "@material-ui/core";
+import PhotoCamera from "@material-ui/icons/PhotoCamera";
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { onEditProfileName, onEditProfileEmail, updateUserInfo } from '../../redux/user/user.actions';
+import { 
+  onEditProfileName, 
+  onEditProfileEmail, 
+  updateUserInfo,
+  uploadProfileImage, 
+  uploadProfileImageTypeError, 
+  deleteProfileImage 
+} from '../../redux/user/user.actions';
 import { 
   selectUserToken,
   selectCurrentUser, 
   selectEditProfilePending,
   selectEditNameStatus,
-  selectEditEmailStatus
+  selectEditEmailStatus,
+  selectUploadProfilePicPending,
+  selectDeleteProfilePicPending
  } from '../../redux/user/user.selectors';
 
 const mapStateToProps = createStructuredSelector({
@@ -19,13 +30,19 @@ const mapStateToProps = createStructuredSelector({
   userInfo: selectCurrentUser,
   editProfilePenging: selectEditProfilePending,
   editNameStatus: selectEditNameStatus,
-  editEmailStatus: selectEditEmailStatus
+  editEmailStatus: selectEditEmailStatus,
+  uploadProfilePicPending: selectUploadProfilePicPending,
+  deleteProfilePicPending: selectDeleteProfilePicPending
+  
 })
 
 const mapDispatchToProps = (dispatch) => ({
   onEditProfileName: () => dispatch(onEditProfileName()),
   onEditProfileEmail: () => dispatch(onEditProfileEmail()),
-  updateUserInfo: (token, displayName, email) => dispatch(updateUserInfo(token, displayName, email))
+  updateUserInfo: (token, displayName, email) => dispatch(updateUserInfo(token, displayName, email)),
+  uploadProfileImage: (token, profilepic) => dispatch(uploadProfileImage(token, profilepic)),
+  uploadProfileImageTypeError: data => dispatch(uploadProfileImageTypeError(data)),
+  deleteProfileImage: token => dispatch(deleteProfileImage(token)),
 });
 
 class EditProfile extends Component {
@@ -40,6 +57,27 @@ class EditProfile extends Component {
   handleChange = event => {
     const { value, name } = event.target;
     this.setState({ [name]: value })
+  }
+
+  onChangeFile = event => {
+    const imageFile = event.target.files[0];
+
+    if (!imageFile) {
+      this.props.uploadProfileImageTypeError('Please select an image.')
+      return false;
+    }
+    if (!imageFile.name.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|HEIC)$/)) {
+      this.props.uploadProfileImageTypeError('File type must be .jpg/jpeg, .png, .HEIC')
+      return false;
+    } else {
+      this.props.uploadProfileImage(this.props.userToken, imageFile);
+    }
+  }
+
+  onDelete = event => {
+    if (this.props.userInfo.avatar) {
+      this.props.deleteProfileImage(this.props.userToken);
+    }
   }
 
   handleEditClick = event => {
@@ -66,15 +104,39 @@ class EditProfile extends Component {
 
   render() {
     const { userInfo, editProfilePenging, editNameStatus, editEmailStatus } = this.props;
+    const { uploadProfilePicPending, deleteProfilePicPending } = this.props;
     return (
       <div className='manage-edit-profile'>
         <div className='manage-user-avatar'>
           <div className='user-avatar-container'>
-            <div className='user-avatar-edit'>
-            {
-              userInfo.avatar ? <img alt='userimg' src={`data:image/png;base64,${userInfo.avatar}`} /> 
-              : <img alt='default_userimg' src={require('../../assets/user_default.png')} />
-            }
+            <div className='user-avatar-n-btn'>
+              <div className='user-avatar-edit'>
+                {
+                  userInfo.avatar ? <img alt='userimg' src={`data:image/png;base64,${userInfo.avatar}`} /> 
+                  : <img alt='default_userimg' src={require('../../assets/user_default.png')} />
+                }
+              </div>
+              <div className='uploaduserimg-container'>
+                <input 
+                  accept="image/*" 
+                  id="upload-avatar"
+                  type="file" 
+                  style={{display:"none"}}
+                  onChange={this.onChangeFile}
+                />
+                <label htmlFor="upload-avatar">
+                  <IconButton size="small" component="span">
+                    {!uploadProfilePicPending && <PhotoCamera />}
+                    {uploadProfilePicPending && <CircularProgress size={15} />}
+                  </IconButton>
+                </label>
+              </div>
+              <div className='deleteuserimg-container'>
+                <IconButton size="small" onClick={this.onDelete} >
+                  {!deleteProfilePicPending && <DeleteIcon />}
+                  {deleteProfilePicPending && <CircularProgress size={15} />}
+                </IconButton>
+              </div>
             </div>
             <span>@{userInfo.userId}</span>
           </div>

@@ -25,21 +25,47 @@
       justify-content: space-between;
       width: 310px;
 
-      .user-avatar-edit {
-        margin: 0% 0 5% 0;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        border: 2px solid #333333;
-        border-radius: 50%;
+      .user-avatar-n-btn {
         width: 200px;
         height: 200px;
-        overflow: hidden;
-    
-        img {
-          max-width: 100%;
-          max-height: 100%;
-          display: block;
+        position: relative;
+
+        .user-avatar-edit {
+          margin: 0% 0 5% 0;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+          border: 2px solid #333333;
+          border-radius: 50%;
+          width: 200px;
+          height: 200px;
+          overflow: hidden;
+      
+          img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+          }
+        }
+
+        .uploaduserimg-container {
+          position: absolute;
+          top: 150px;
+          left: 10px;
+
+          .MuiButtonBase-root {
+            background-color: rgba(243, 243, 243, 0.8);
+          }
+        }
+  
+        .deleteuserimg-container {
+          position: absolute;
+          top: 150px;
+          right: 10px;
+
+          .MuiButtonBase-root {
+            background-color: rgba(243, 243, 243, 0.8);
+          }
         }
       }
 
