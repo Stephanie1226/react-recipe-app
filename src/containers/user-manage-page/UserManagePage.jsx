@@ -33,6 +33,7 @@ class UserManagePage extends Component {
           <button value='manageRecipe' onClick={this.handleClick}
             className={`manage-btn ${ managePageStatus==='manageRecipe' ? 'underscore': ''}`}>Recipe Overview</button>
         </div>
+        <img alt='manage-bg' src={require('../../assets/manage_bg.png')} className='manage-bg' />
         {
           managePageStatus==='manageRecipe' ?
           <div className='user-manage-page-recipe'>

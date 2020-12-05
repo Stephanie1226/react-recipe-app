@@ -140,7 +140,7 @@ class EditProfile extends Component {
             </div>
             <span>@{userInfo.userId}</span>
           </div>
-          <div className='avatar-art'></div>
+          <img alt='manage-deco' src={require('../../assets/manage_deco.png')} className='manage-deco' />
         </div>
         <hr className='profile-separate-line'></hr>
         {
