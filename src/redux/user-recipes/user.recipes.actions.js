@@ -1,6 +1,8 @@
 import { apiCall } from '../../api/api';
 import UserRecipesTypes from './user.recipes.types';
 
+export const resetUserRecipe = () => ({type: UserRecipesTypes.RESET_USER_RECIPE})
+
 export const initialRequestAllUserRecipes = (token) => (dispatch) => {
   dispatch({ type: UserRecipesTypes.INITIAL_REQUEST_ALL_USER_RECIPES_PENDING })
   apiCall('https://chieh-recipe-manager.herokuapp.com/recipes/me/all',

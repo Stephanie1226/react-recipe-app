@@ -43,7 +43,6 @@ class SignIn extends Component {
   render() {
     return (
       <div className='signin-container'>
-        {console.log(this.props.signinPending)}
         <form className='sign-in-form' onSubmit={this.handleSubmit}>
           <h6>Sign in with your email and password.</h6>
           <FormInput 

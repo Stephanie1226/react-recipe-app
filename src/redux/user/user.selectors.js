@@ -22,6 +22,11 @@ export const selectSignupErrormsg = createSelector(
   user => user.signupErrormsg
 )
 
+export const selectCurrentUserAll = createSelector(
+  [selectUser],
+  user => user.currentUser
+)
+
 export const selectCurrentUser = createSelector(
   [selectUser],
   user => user.currentUser.user
@@ -50,6 +55,16 @@ export const selectUserId = createSelector(
 export const selectUserToken = createSelector(
   [selectUser],
   user => user.currentUser.token
+)
+
+export const selectDeleteProfilePending = createSelector(
+  [selectUser],
+  user => user.deleteProfilePending
+)
+
+export const selectDeleteProfileSuccess = createSelector(
+  [selectUser],
+  user => user.deleteProfileSuccess
 )
 
 export const selectUploadProfilePicPending = createSelector(

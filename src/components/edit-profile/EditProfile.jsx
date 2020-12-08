@@ -5,6 +5,11 @@ import { IconButton, CircularProgress} from "@material-ui/core";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
 import DeleteIcon from '@material-ui/icons/Delete';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+
+import DeleteProfileAlert from '../delete-profile-alert/DeleteProfileAlert';
+
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { 
@@ -140,13 +145,13 @@ class EditProfile extends Component {
             </div>
             <span>@{userInfo.userId}</span>
           </div>
-          <div className='avatar-art'></div>
+          <img alt='manage-deco' src={require('../../assets/manage_deco.png')} className='manage-deco' />
         </div>
         <hr className='profile-separate-line'></hr>
         {
           editNameStatus ?
           <div className='manage-edit-name'>
-            <input name="displayName" ype="text" id="edit-name" onChange={this.handleChange} defaultValue={userInfo.name} />
+            <input name="displayName" type="text" id="edit-name" onChange={this.handleChange} defaultValue={userInfo.name} />
             <form onSubmit={this.handleSubmit}>
               <button className='manage-edit manage-edit-submit' variant="outlined" type="submit" size="small" style={{marginRight: "10px"}}
                 disabled={editProfilePenging}>
@@ -159,7 +164,7 @@ class EditProfile extends Component {
           :
           <div className='manage-edit-name'>
             <h4>{userInfo.name}</h4>
-            <button className='manage-edit-btn' value='onEditName' onClick={this.handleEditClick}>Edit your name</button>
+            <button className='manage-edit-btn' value='onEditName' onClick={this.handleEditClick}> Edit your name</button>
           </div>
         }
         {
@@ -181,6 +186,14 @@ class EditProfile extends Component {
             <button className='manage-edit-btn' value='onEditEmail' onClick={this.handleEditClick}>Edit email</button>
           </div>
         }
+        <div className='manage-delete-user'>
+          <span>
+            <FontAwesomeIcon icon={faExclamationTriangle} color="#D05759" style={{marginRight: "10px"}} />
+            Danger
+            <FontAwesomeIcon icon={faExclamationTriangle} color="#D05759" style={{marginLeft: "10px"}} />
+          </span>
+          <DeleteProfileAlert />
+        </div>
       </div>
     )
   }

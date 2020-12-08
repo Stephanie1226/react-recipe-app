@@ -1,0 +1,16 @@
+.delete-user-alert-container {
+  .manage-delete-user-btn {
+    border: none;
+      background-color: inherit;
+      color: #D05759;
+      cursor: pointer;
+      display: inline-block;
+      text-decoration:underline;
+      padding: 0 0;
+
+      &:hover {
+        color: red;
+      }
+  }
+}
+

@@ -12,11 +12,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { logoutCurrentUser } from '../../redux/user/user.actions';
+import { resetUserRecipe } from '../../redux/user-recipes/user.recipes.actions';
+import { resetUser, logoutCurrentUser } from '../../redux/user/user.actions';
 import { selectUserToken } from '../../redux/user/user.selectors';
 
 
 const mapDispatchToProps = dispatch => ({
+  resetUser: () => dispatch(resetUser()),
+  resetUserRecipe: () => dispatch(resetUserRecipe()),
   logoutCurrentUser: token => dispatch(logoutCurrentUser(token))
 })
 
@@ -27,7 +30,7 @@ const mapStateToProps = createStructuredSelector({
 const Header = ({ logoutCurrentUser, currentUserToken }) => {
   const handleClick = event => {
     if (currentUserToken) {
-      logoutCurrentUser(currentUserToken)
+      logoutCurrentUser(currentUserToken);
     };
   }
 

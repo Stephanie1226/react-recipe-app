@@ -77,6 +77,18 @@ const requestUserRecipesReducer = (state = INITIAL_STATE, action={}) => {
         ...state,
         userTotalPages: action.payload
       }
+    case UserRecipesTypes.RESET_USER_RECIPE:
+      return {
+        isPending: true,
+        userRecipes: [],
+        userSelectedCategory: "All",
+        filteredUserRecipes: [],
+        userCurrentPage: 1,
+        userTotalPages: 0,
+        total_count: 0,
+        public_count: 0,
+        userKeyword: ''
+      }
     default:
       return state
   }

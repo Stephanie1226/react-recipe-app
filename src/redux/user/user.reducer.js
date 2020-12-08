@@ -2,11 +2,13 @@ import { UserActionTypes } from './user.types';
 import { updateUser } from './user.utils';
 
 const INITIAL_STATE = {
-	currentUser: { user: {_id: 'no-user'} },
+	currentUser: { user: {_id: 'no-user'}, token: '' },
 	signinPending: false,
 	signinErrormsg: '',
 	signupPending: false,
 	signupErrormsg: '',
+	deleteProfilePending: false,
+	deleteProfileSuccess: false,
 	uploadProfilePicPending: false,
 	uploadProfilePicSuccessmsg: '',
 	uploadProfilePicErrormsg: '',
@@ -66,6 +68,18 @@ const userReducer = (state = INITIAL_STATE, action) => {
 				signupPending: false,
 				currentUser: { user: {_id: 'no-user'} },
 				signupErrormsg: action.payload,
+			}
+		case UserActionTypes.DELETE_PROFILE_PENDING:
+			return {
+				...state,
+				deleteProfilePending: true,
+				deleteProfileSuccess: false
+			}
+		case UserActionTypes.DELETE_PROFILE_SUCCESS:
+			return {
+				...state,
+				deleteProfilePending: false,
+				deleteProfileSuccess: true
 			}
 		case UserActionTypes.UPLOAD_PROFILE_PIC_PENDING:
 			return {
@@ -132,6 +146,25 @@ const userReducer = (state = INITIAL_STATE, action) => {
 			return {
 				...state,
 				managePageStatus: action.payload
+			}
+		case UserActionTypes.RESET_USER:
+			return {
+				currentUser: { user: {_id: 'no-user'}, token: '' },
+				signinPending: false,
+				signinErrormsg: '',
+				signupPending: false,
+				signupErrormsg: '',
+				deleteProfilePending: false,
+				deleteProfileSuccess: false,
+				uploadProfilePicPending: false,
+				uploadProfilePicSuccessmsg: '',
+				uploadProfilePicErrormsg: '',
+				onEditProfileName: false,
+				onEditProfileEmail: false,
+				editProfilePending: false,
+				editProfileErrormsg: '',
+				deleteProfilePicPending: false,
+				managePageStatus: 'editProfile'
 			}
 		default:
 			return state;

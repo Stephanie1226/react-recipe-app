@@ -1,5 +1,7 @@
 import { UserActionTypes } from './user.types';
 
+export const resetUser = () => ({type: UserActionTypes.RESET_USER})
+
 export const singinUser = (email, password) => (dispatch) => {
 	dispatch({ type: UserActionTypes.SIGN_IN_USER_PENDING })
 	fetch('https://chieh-recipe-manager.herokuapp.com/users/login', 
@@ -144,6 +146,24 @@ export const updateUserInfo = (token, displayName, email) => (dispatch) => {
 		}
 	})
 	.catch(error => dispatch({ type: UserActionTypes.UPDATE_USER_INFO_FAILED, payload: error }))
+}
+
+export const deleteProfile = (token) => (dispatch) => {
+	dispatch({ type: UserActionTypes.DELETE_PROFILE_PENDING })
+	console.log('This is delete profile actionnnnnnnnnnnnnn')
+	fetch('https://chieh-recipe-manager.herokuapp.com/users/deleteme',
+	{
+		method: 'DELETE',
+		headers: {
+			'Authorization': 'Bearer ' + token
+		},
+	})
+	.then(response => response.json())
+	.then(data => {
+		if (data !== undefined) {
+			dispatch({ type: UserActionTypes.DELETE_PROFILE_SUCCESS, payload: data })
+		}
+	})
 }
 
 export const changeManagePageStatus = (data) => ({

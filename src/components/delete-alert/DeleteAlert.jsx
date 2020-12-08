@@ -81,12 +81,12 @@ class DeleteAlert extends Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleCancel} color="primary">
-              Cancel
-            </Button>
             <Button onClick={this.handleConfirm} color="primary" disabled={deleteRecipePending} autoFocus>
               {deleteRecipePending && <CircularProgress size={15} />}
               {!deleteRecipePending && 'Confirm'}
+            </Button>
+            <Button onClick={this.handleCancel} color="primary">
+              Cancel
             </Button>
           </DialogActions>
         </Dialog>
