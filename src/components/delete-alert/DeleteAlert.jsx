@@ -13,8 +13,10 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { deleteRecipe } from '../../redux/delete-recipe/delete.recipe.actions';
+import { initialRequestAllUserRecipes, } from '../../redux/user-recipes/user.recipes.actions';
 import { selectDeleteRecipePending, selectDeleteRecipeSuccess } from '../../redux/delete-recipe/delete.recipe.selectors';
 import { selectUserToken } from '../../redux/user/user.selectors';
+
 
 const mapStateToProps = createStructuredSelector({
   deleteRecipePending: selectDeleteRecipePending,
@@ -23,6 +25,7 @@ const mapStateToProps = createStructuredSelector({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+  initialRequestAllUserRecipes: (token) => dispatch(initialRequestAllUserRecipes(token)),
   deleteRecipe: (userToken, recipeID) => dispatch(deleteRecipe(userToken, recipeID))
 });
 
@@ -38,8 +41,15 @@ class DeleteAlert extends Component {
     if (prevProps.deleteRecipeSuccess !== this.props.deleteRecipeSuccess
        && this.props.deleteRecipeSuccess) {
       this.handleClose();
-      this.props.history.push('/myrecipes');
-      this.props.history.go();
+
+      if (this.props.onDetailsPage) {
+        this.props.history.push('/myrecipes');
+        this.props.history.go();
+      }
+
+      if (this.props.onManagePage) {
+        this.props.initialRequestAllUserRecipes(this.props.userToken);
+      }
     }
   }
 
@@ -64,7 +74,7 @@ class DeleteAlert extends Component {
     return (
       <div className='delete-alert-container'>
         <IconButton type="button" aria-label="edit-recipe" onClick={this.handleClickOpen}>
-          <DeleteIcon />
+          <DeleteIcon fontSize={`${this.props.onManagePage ? 'small': ''}`}  />
         </IconButton> 
         <Dialog
           open={this.state.open}

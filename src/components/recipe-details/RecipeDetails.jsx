@@ -78,7 +78,7 @@ const RecipeDetails = ({ recipe, history, userId, setToBeUpdatedRecipe, resetUpd
                   history.push('/updaterecipe');}}>
                 <EditRoundedIcon />
               </IconButton> 
-              <DeleteAlert onDeleteRecipe={recipe}/>
+              <DeleteAlert onDeleteRecipe={recipe} onDetailsPage/>
             </div> 
             : null
         }

@@ -31,6 +31,8 @@
   }
 
   .recipe-row-edit {
+    display: flex;
+    flex-direction: row;
     width: 10%;
   }
 }

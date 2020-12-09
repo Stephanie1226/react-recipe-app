@@ -1,12 +1,22 @@
 import React from 'react';
 import './RecipeRow.styles.scss';
+import { withRouter } from 'react-router-dom';
 
 import { IconButton } from "@material-ui/core";
 import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
 import Switch from '@material-ui/core/Switch';
 
-const RecipeRow = ({ userRecipe }) => {
+import DeleteAlert from '../delete-alert/DeleteAlert';
+
+import { connect } from 'react-redux';
+import { setToBeUpdatedRecipe } from '../../redux/update-recipe/update.recipe.actions';
+
+
+const mapDispatchToProps = (dispatch) => ({
+  setToBeUpdatedRecipe: (data) => dispatch(setToBeUpdatedRecipe(data))
+});
+
+const RecipeRow = ({ history, userRecipe, setToBeUpdatedRecipe }) => {
   const { title, createdAt, updatedAt } = userRecipe;
   return (
     <div className='recipe-row-container'>
@@ -18,15 +28,16 @@ const RecipeRow = ({ userRecipe }) => {
       <span className='recipe-row-createdat'>{createdAt.substring(0,10)}</span>
       <span className='recipe-row-updatedat'>{updatedAt.substring(0,10)}</span>
       <div className='recipe-row-edit'>
-        <IconButton aria-label="edit-recipe-row" >
+        <IconButton aria-label="edit-recipe-row" 
+          onClick={() => {
+            setToBeUpdatedRecipe(userRecipe);
+            history.push('/updaterecipe');}}>
           <EditIcon fontSize="small" />
         </IconButton>
-        <IconButton aria-label="delete-recipe-row" >
-          <DeleteIcon fontSize="small" />
-        </IconButton>
+        <DeleteAlert onDeleteRecipe={userRecipe} onManagePage/>
       </div>
     </div>
   )
 }
 
-export default RecipeRow;
+export default withRouter(connect(null, mapDispatchToProps)(RecipeRow));
