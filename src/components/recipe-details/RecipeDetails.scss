@@ -52,14 +52,21 @@
 
   .recipe-details-row3 {
     width: 90%;
-    margin-top: 3%;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-
-    span:last-child {
-      padding: 0 0;
+    justify-content: space-between;
+    align-items: flex-end;
+    
+    .recipe-details-row3-left {
+      width: 90%;
+      margin-top: 3%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+  
+      span:last-child {
+        padding: 0 0;
+      }
     }
   }
 

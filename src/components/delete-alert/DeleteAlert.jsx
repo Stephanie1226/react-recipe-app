@@ -74,7 +74,7 @@ class DeleteAlert extends Component {
     return (
       <div className='delete-alert-container'>
         <IconButton type="button" aria-label="edit-recipe" onClick={this.handleClickOpen}>
-          <DeleteIcon fontSize={`${this.props.onManagePage ? 'small': ''}`}  />
+          <DeleteIcon fontSize={`${this.props.onManagePage ? 'small': 'inherit'}`}  />
         </IconButton> 
         <Dialog
           open={this.state.open}

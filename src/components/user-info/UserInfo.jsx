@@ -1,5 +1,6 @@
 import React from 'react';
 import './UserInfo.styles.scss';
+import { withRouter } from 'react-router-dom';
 
 import EditRoundedIcon from '@material-ui/icons/EditRounded';
 
@@ -49,6 +50,7 @@ const UserInfo = ({ history, userInfo, usersTotalCount, usersPublicCount, v1, v2
           <StatsCard version={v1 ? 'v1' : 'v2'} />
         </div>
         <div className='user-info-edit-btn'>
+          {console.log(history)}
           <StyledGreyButton size="small" component="span" startIcon={<EditRoundedIcon />}
             onClick={() => {history.push('/usermanage');}}> 
             Manage
@@ -59,4 +61,4 @@ const UserInfo = ({ history, userInfo, usersTotalCount, usersPublicCount, v1, v2
   );
 }
 
-export default connect(mapStateToProps)(UserInfo);
+export default withRouter(connect(mapStateToProps)(UserInfo));

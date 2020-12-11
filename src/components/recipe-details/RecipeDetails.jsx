@@ -83,12 +83,15 @@ const RecipeDetails = ({ recipe, history, userId, setToBeUpdatedRecipe, resetUpd
             : null
         }
       </div>
-
+      
       <div className='recipe-details-row3'>
-        <AlarmIcon /><span style={{paddingLeft: "5px"}}>{total_time} mins</span>
-        <div style={{paddingLeft: "16px", fontSize: "13px"}}><span>Prep: </span><br /><span>{preparation} mins</span></div>
-        <div style={{paddingLeft: "16px", fontSize: "13px"}}><span>Cook: </span><br /><span>{cook_time} mins</span></div>
-        <PersonOutlineIcon style={{marginLeft: 16}} /><span style={{paddingLeft: "5px"}}>{servings} people</span>
+        <div className='recipe-details-row3-left'>
+          <AlarmIcon /><span style={{paddingLeft: "5px"}}>{total_time} mins</span>
+          <div style={{paddingLeft: "16px", fontSize: "13px"}}><span>Prep: </span><br /><span>{preparation} mins</span></div>
+          <div style={{paddingLeft: "16px", fontSize: "13px"}}><span>Cook: </span><br /><span>{cook_time} mins</span></div>
+          <PersonOutlineIcon style={{marginLeft: 16}} /><span style={{paddingLeft: "5px"}}>{servings} people</span>
+        </div>
+        <span></span>
       </div>
 
       <div className={`${userId !== 'no-user' &&  userId === owner ? 'recipe-details-auth': ''} recipe-details-img-container`}>
@@ -130,14 +133,14 @@ const RecipeDetails = ({ recipe, history, userId, setToBeUpdatedRecipe, resetUpd
       <div className='recipe-details-steps-container'>
         <h3>{`Steps`}</h3>
         <Stepper className='stepper' orientation="vertical">
-          {steps.map((step, index) => (
-            <Step className='step' key={index} active={true} >
-              <StepLabel className='stepLabel'>{`  Step ${index+1}`}</StepLabel>
-              <StepContent className='stepContent'>
-                <Typography className='typography'>{step}</Typography>
-              </StepContent>
-            </Step>
-          ))}
+        {steps.map((step, index) => (
+          <Step className='step' key={index} active={true} >
+            <StepLabel className='stepLabel'>{`  Step ${index+1}`}</StepLabel>
+            <StepContent className='stepContent'>
+              <Typography className='typography'>{step}</Typography>
+            </StepContent>
+          </Step>
+        ))}
         </Stepper>
       </div >
       <Button variant="outlined" type="button" size="small" onClick={() => history.goBack()}>Go Back</Button>

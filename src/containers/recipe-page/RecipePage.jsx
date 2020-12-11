@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './RecipePage.styles.scss';
+import { withRouter } from 'react-router-dom';
 
 import Loading from '../../components/loading/Loading';
 import RecipeDetails from '../../components/recipe-details/RecipeDetails';
@@ -66,4 +67,4 @@ class RecipePage extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RecipePage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RecipePage));
