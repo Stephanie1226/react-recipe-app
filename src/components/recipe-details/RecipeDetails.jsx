@@ -13,6 +13,8 @@ import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import { Stepper, Step, StepLabel, StepContent, Typography } from "@material-ui/core";
 
+import SaveRecipeBtn from '../save-recipe-btn/SaveRecipeBtn';
+
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectUserId } from '../../redux/user/user.selectors';
@@ -91,7 +93,7 @@ const RecipeDetails = ({ recipe, history, userId, setToBeUpdatedRecipe, resetUpd
           <div style={{paddingLeft: "16px", fontSize: "13px"}}><span>Cook: </span><br /><span>{cook_time} mins</span></div>
           <PersonOutlineIcon style={{marginLeft: 16}} /><span style={{paddingLeft: "5px"}}>{servings} people</span>
         </div>
-        <span></span>
+        <SaveRecipeBtn />
       </div>
 
       <div className={`${userId !== 'no-user' &&  userId === owner ? 'recipe-details-auth': ''} recipe-details-img-container`}>
