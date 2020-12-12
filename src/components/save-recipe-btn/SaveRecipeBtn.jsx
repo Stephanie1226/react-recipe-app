@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './SaveRecipeBtn.scss';
 
 import IconButton from '@material-ui/core/IconButton';
