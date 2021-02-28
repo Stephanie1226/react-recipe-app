@@ -21,3 +21,4 @@ export const selectUpdateRecipeFailed = createSelector(
   [selectUpdateRecipe],
   updateRecipe => updateRecipe.updateRecipeFailed
 )
+
