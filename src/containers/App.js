@@ -7,6 +7,7 @@ import Footer from '../components/footer/Footer';
 
 import UserProfilePage from './user-profile-page/UserProfilePage';
 import HomePage from './home-page/HomePage';
+import ExploreUserPage from './explore-user-page/ExploreUserPage';
 import ExplorePage from './explore-page/ExplorePage';
 import UserRecipePage from './user-recipe-page/UserRecipePage';
 import UserManagePage from './user-manage-page/UserManagePage';
@@ -37,6 +38,7 @@ function App({ currentUserToken }) {
             <Switch>
               <Route exact path='/' component={HomePage} />
               <Route exact path='/explore' component={ExplorePage} />
+              <Route exact path='/exploreuser' component={ExploreUserPage} /> 
               <Route exact path='/myprofile' component={UserProfilePage} />
               <Route exact path='/myrecipes' render={() => currentUserToken ? (<UserRecipePage />) : (<Redirect to='/signin' />)} />
               <Route exact path='/usermanage' component={UserManagePage} />

@@ -1,0 +1,108 @@
+.explore-page-container {
+  background: #F7EFEE;
+  padding: 30px 20px 40px 20px;
+
+  @media (min-width: 630px) and (max-width: 950px) {
+    padding: 3% 5%;
+  }
+
+  @media (max-width: 400px) {
+    padding: 15px 0 40px 0;
+  }
+
+  h1 {
+    font-family: Frank Ruhl Libre;
+    color: #2A356C;
+    margin: 1% 0 0 9%;
+
+    @media (min-width: 630px) and (max-width: 950px) {
+      margin: 1% 0 0 0%;
+    }
+
+    @media (max-width: 460px) {
+      margin: 1% 0 0 3%;
+    }
+  }
+
+  .explore-search-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    width: 82%;
+    margin: 0 auto;
+    padding-top: 35px;
+
+    @media (min-width: 630px) and (max-width: 950px) {
+      width: 100%;
+    }
+
+    @media (max-width: 460px) {
+      width: 100%;
+      padding: 10px 15px 0px 15px;
+      margin: 0 0;
+    }
+
+    .explore-search-col-1n2 {
+      width: 70%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      .explore-search-col-1 {
+        width: 70%;
+        min-width: 325px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 15px;
+        margin-right: 1%;
+        
+        .category-random-btn {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          flex-wrap: wrap;
+  
+          .category-btn-group {
+            margin-bottom: 3%;
+          }
+        }
+      }
+    }
+
+    .explore-search-col-3 {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      height: 40px;
+
+      @media (max-width: 629px) {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10%;
+      }
+    }
+
+  }
+
+  .explore-page-main-container {
+
+    h5 {
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      line-height: 2;
+      span {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(180deg, rgba(255,255,255,0) 70%, #FBDD8A 70%);
+      }
+    }
+    .public-pagination-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+  }
+}
