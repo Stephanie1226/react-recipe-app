@@ -8,6 +8,11 @@ const INITIAL_STATE = {
   requestSingleRecipePending: true,
   singlePublicRecipe: {},
   requestSinglePublicRecipeError: '',
+  exploreUserPending: false,
+  exploreUserSucess: false,
+  exploreUserRecipes: [],
+  exploreUserFailed: false,
+  exploreUserFailedMsg: '',
   publicSearchFilter: 'byTitle',
   publicSortbyFilter: 'Sort By',
   filteredPublicRecipes: [],
@@ -55,6 +60,26 @@ const requestPublicRecipesReducer = (state = INITIAL_STATE, action={}) => {
         requestSingleRecipePending: false,
         singlePublicRecipe: {},
         requestSinglePublicRecipeError: action.payload,
+      }
+    case PublicRecipesTypes.REQUEST_EXPLORE_USER_RECIPE_PENDING:
+      return {
+        ...state,
+        exploreUserPending: true,
+        exploreUserSucess: false
+      }
+    case PublicRecipesTypes.REQUEST_EXPLORE_USER_RECIPE_SUCCESS:
+      return {
+        ...state,
+        exploreUserPending: false,
+        exploreUserSucess: true,
+        exploreUserRecipes: action.payload
+      }
+    case PublicRecipesTypes.REQUEST_EXPLORE_USER_RECIPE_FAILED:
+      return {
+        ...state,
+        exploreUserPending: false,
+        exploreUserFailed: true,
+        exploreUserFailedMsg: action.payload
       }
     case PublicRecipesTypes.SET_PUBLIC_SEARCH_FILTER:
       return {

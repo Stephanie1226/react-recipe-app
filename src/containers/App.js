@@ -38,7 +38,6 @@ function App({ currentUserToken }) {
             <Switch>
               <Route exact path='/' component={HomePage} />
               <Route exact path='/explore' component={ExplorePage} />
-              <Route exact path='/exploreuser' component={ExploreUserPage} /> 
               <Route exact path='/myprofile' component={UserProfilePage} />
               <Route exact path='/myrecipes' render={() => currentUserToken ? (<UserRecipePage />) : (<Redirect to='/signin' />)} />
               <Route exact path='/usermanage' component={UserManagePage} />
@@ -48,6 +47,8 @@ function App({ currentUserToken }) {
               <Route exact path='/editrecipephoto' component={EditRecipePhotoPage} />
               <Route path='/explore/:id' component={RecipePage} />
               <Route path='/myrecipes/:id' component={RecipePage} />
+              <Route path='/exploreuser/:id' component={ExploreUserPage} /> 
+              <Route exact path='/exploreuser/test' component={ExploreUserPage} /> 
             </Switch>
           <Footer />
         </div>
