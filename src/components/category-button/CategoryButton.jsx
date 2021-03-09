@@ -78,6 +78,7 @@ class CategoryButton extends Component {
                   ${user_category_active === "true" ? 'user-category-active' : ''}
                   `} >
         <span>{category}</span>
+        {console.log("testtesttest2")}
       </button>
     );
   }
