@@ -3,13 +3,20 @@ import './ExploreUserPage.styles.scss';
 import { withRouter } from 'react-router-dom';
 
 import Loading from '../../components/loading/Loading';
+import CategoryButton from '../../components/category-button/CategoryButton';
 import RecipesOverview from '../../components/recipes-overview/RecipesOverview';
+import SortByFilter from '../../components/sortby-filter/SortByFilter';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { requestExploreUserRecipes } from '../../redux/puclic-recipes/public.recipes.actions';
 import { 
+  requestExploreUserRecipes,
+  requestFilteredPublicRecipes,
+} from '../../redux/puclic-recipes/public.recipes.actions';
+
+import { 
+  selectPublicSelectedCategory,
   selectExploreUserPending,
   selectExploreUserSucess,
   selectExploreUserRecipes,
@@ -19,6 +26,7 @@ import {
 
 
 const mapStateToProps = createStructuredSelector({
+  publicSelectedCategory: selectPublicSelectedCategory,
   exploreUserPending: selectExploreUserPending,
   exploreUserSucess: selectExploreUserSucess,
   exploreUserRecipes: selectExploreUserRecipes,
@@ -28,6 +36,7 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = (dispatch) => ({
   requestExploreUserRecipes: (user_id) => dispatch(requestExploreUserRecipes(user_id)),
+  requestFilteredPublicRecipes: keyword => dispatch(requestFilteredPublicRecipes(keyword)),
 });
 
 class ExploreUserPage extends Component {
@@ -37,15 +46,32 @@ class ExploreUserPage extends Component {
 
   render() {
     const { exploreUserPending, exploreUserSucess, exploreUserRecipes, exploreUserFailed, exploreUserFailedMsg } = this.props;
-
+    const { publicSelectedCategory } = this.props;
+  
     return (
-      <div className=''>
-      {
-        exploreUserPending ?
-        <Loading />
-        :
-        <RecipesOverview recipes={exploreUserRecipes} />
-      }
+
+      <div className='explore-user-page-container'>
+        <h1>Stephanie</h1>
+        <div className="explore-user-info">
+        </div>
+        <div className='explore-filter-container'>
+          <div className='explore-filter-buttons'>
+              <CategoryButton category="All" explore_category explore_category_active={`${publicSelectedCategory === "All" ? "true" : ""}`} />
+              <CategoryButton category="Meal" explore_category explore_category_active={`${publicSelectedCategory === "Meal" ? "true" : ""}`} />
+              <CategoryButton category="Dessert" explore_category explore_category_active={`${publicSelectedCategory === "Dessert" ? "true" : ""}`} />
+              <CategoryButton category="Drink" explore_category explore_category_active={`${publicSelectedCategory === "Drink" ? "true" : ""}`} />
+          </div>
+          <div className="explore-filter-sort">
+            <SortByFilter />
+          </div>
+        </div>
+      
+        {
+          exploreUserPending ?
+          <Loading />
+          :
+          <RecipesOverview recipes={exploreUserRecipes} />
+        }
       </div>
     );
   }
