@@ -49,7 +49,17 @@
       }
     }
   }
-
+  .recipe-details-row2-1 {
+    width: 90%;
+    display: flex;
+    span {
+      font-size: 18px;
+    }
+    a {
+      color: #333;
+      text-decoration: underline;
+    }
+  }
   .recipe-details-row3 {
     width: 90%;
     display: flex;

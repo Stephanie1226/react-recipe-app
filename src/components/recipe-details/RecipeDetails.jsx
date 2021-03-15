@@ -35,10 +35,10 @@ const mapDispatchToProps = (dispatch) => ({
 
 const RecipeDetails = ({ recipe, history, userId, setToBeUpdatedRecipe, resetUpdateRecipe, setOnEditRecipeForPhoto, single_recipe }) => {
   if (recipe) {
-    var { img, title, preparation, meal, dessert, drink, total_time, cook_time, servings, ingredients, steps, owner } = recipe;
+    var { img, title, preparation, meal, dessert, drink, total_time, cook_time, servings, ingredients, steps, owner, owner_name } = recipe;
     var recipe_public = recipe.public;
   } else {
-    ({ img, title, preparation, meal, dessert, drink, total_time, cook_time, servings, ingredients, steps, owner } = single_recipe);
+    ({ img, title, preparation, meal, dessert, drink, total_time, cook_time, servings, ingredients, steps, owner, owner_name } = single_recipe);
     recipe_public = single_recipe.public;
   }
 
@@ -85,7 +85,9 @@ const RecipeDetails = ({ recipe, history, userId, setToBeUpdatedRecipe, resetUpd
             : null
         }
       </div>
-      
+      <div className='recipe-details-row2-1'>
+        <span>by&nbsp;&nbsp;<a href={`/exploreuser/:${owner}`} className="recipe-details-ownername">{owner_name}</a></span>
+      </div>
       <div className='recipe-details-row3'>
         <div className='recipe-details-row3-left'>
           <AlarmIcon /><span style={{paddingLeft: "5px"}}>{total_time} mins</span>
