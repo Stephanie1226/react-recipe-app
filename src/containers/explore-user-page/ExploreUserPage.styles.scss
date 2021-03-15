@@ -10,17 +10,34 @@
     padding: 15px 0 40px 0;
   }
 
-  h1 {
-    font-family: Frank Ruhl Libre;
-    color: #2A356C;
+  .explore-user-name {
     margin: 1% 0 0 9%;
-
     @media (min-width: 630px) and (max-width: 950px) {
-      margin: 1% 0 0 0%;
+      width: 100%;
     }
-
     @media (max-width: 460px) {
-      margin: 1% 0 0 3%;
+      width: 100%;
+      padding: 10px 15px 0px 15px;
+      margin: 0 0;
+    }
+    h1 {
+      font-family: Frank Ruhl Libre;
+      color: #2A356C;
+      margin-bottom: 0;
+    }
+  }
+
+  
+  .explore-user-info {
+    width: 82%;
+    margin: 0 auto;
+    @media (min-width: 630px) and (max-width: 950px) {
+      width: 100%;
+    }
+    @media (max-width: 460px) {
+      width: 100%;
+      padding: 10px 15px 0px 15px;
+      margin: 0 0;
     }
   }
 
@@ -53,6 +70,5 @@
     .explore-filter-sort {
       align-content:flex-end;
     }
-
   }
 }
