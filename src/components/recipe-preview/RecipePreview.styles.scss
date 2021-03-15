@@ -88,6 +88,10 @@
     }
     h6 {
       margin: 5px 0px 15px 20px;
+      .preview-owner-name {
+        text-decoration: underline;
+        color: #333;
+      }
     }
   }
 }
