@@ -7,6 +7,7 @@ import Footer from '../components/footer/Footer';
 
 import UserProfilePage from './user-profile-page/UserProfilePage';
 import HomePage from './home-page/HomePage';
+import ExploreUserPage from './explore-user-page/ExploreUserPage';
 import ExplorePage from './explore-page/ExplorePage';
 import UserRecipePage from './user-recipe-page/UserRecipePage';
 import UserManagePage from './user-manage-page/UserManagePage';
@@ -46,6 +47,8 @@ function App({ currentUserToken }) {
               <Route exact path='/editrecipephoto' component={EditRecipePhotoPage} />
               <Route path='/explore/:id' component={RecipePage} />
               <Route path='/myrecipes/:id' component={RecipePage} />
+              <Route path='/exploreuser/:id' component={ExploreUserPage} /> 
+              <Route exact path='/exploreuser/test' component={ExploreUserPage} /> 
             </Switch>
           <Footer />
         </div>

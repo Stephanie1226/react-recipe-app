@@ -1,0 +1,74 @@
+.explore-user-page-container {
+  background: #F7EFEE;
+  padding: 30px 20px 40px 20px;
+
+  @media (min-width: 630px) and (max-width: 950px) {
+    padding: 3% 5%;
+  }
+
+  @media (max-width: 400px) {
+    padding: 15px 0 40px 0;
+  }
+
+  .explore-user-name {
+    margin: 1% 0 0 9%;
+    @media (min-width: 630px) and (max-width: 950px) {
+      width: 100%;
+    }
+    @media (max-width: 460px) {
+      width: 100%;
+      padding: 10px 15px 0px 15px;
+      margin: 0 0;
+    }
+    h1 {
+      font-family: Frank Ruhl Libre;
+      color: #2A356C;
+      margin-bottom: 0;
+    }
+  }
+
+  
+  .explore-user-info {
+    width: 82%;
+    margin: 0 auto;
+    @media (min-width: 630px) and (max-width: 950px) {
+      width: 100%;
+    }
+    @media (max-width: 460px) {
+      width: 100%;
+      padding: 10px 15px 0px 15px;
+      margin: 0 0;
+    }
+  }
+
+  .explore-filter-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 82%;
+    margin: 0 auto;
+    padding-top: 35px;
+
+    @media (min-width: 630px) and (max-width: 950px) {
+      width: 100%;
+    }
+
+    @media (max-width: 460px) {
+      width: 100%;
+      padding: 10px 15px 0px 15px;
+      margin: 0 0;
+    }
+
+    .explore-filter-buttons {
+      width: 70%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-bottom: 3%;
+    }
+    .explore-filter-sort {
+      align-content:flex-end;
+    }
+  }
+}

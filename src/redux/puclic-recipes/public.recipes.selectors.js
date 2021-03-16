@@ -61,3 +61,28 @@ export const selectPublicTotalPages = createSelector(
   [selectPublicRecipes],
   allPublicRecipes => allPublicRecipes.totalPages
 )
+
+export const selectExploreUserPending = createSelector(
+  [selectPublicRecipes],
+  allPublicRecipes => allPublicRecipes.exploreUserPending
+)
+
+export const selectExploreUserSucess = createSelector(
+  [selectPublicRecipes],
+  allPublicRecipes => allPublicRecipes.exploreUserSucess
+)
+
+export const selectExploreUserRecipes = createSelector(
+  [selectPublicRecipes],
+  allPublicRecipes => allPublicRecipes.exploreUserRecipes
+)
+
+export const selectExploreUserFailed = createSelector(
+  [selectPublicRecipes],
+  allPublicRecipes => allPublicRecipes.exploreUserFailed
+)
+
+export const selectExploreUserFailedMsg = createSelector(
+  [selectPublicRecipes],
+  allPublicRecipes => allPublicRecipes.exploreUserFailedMsg
+)

@@ -6,7 +6,7 @@ import TimerIcon from '@material-ui/icons/Timer';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 
 const RecipePreview = ({ recipe, match, history }) => {
-  const { _id, title, preparation, cook_time, servings, owner_name } = recipe;
+  const { _id, title, preparation, cook_time, servings, owner, owner_name } = recipe;
   return (
     <div className='recipe-container' 
       onClick={() => history.push({
@@ -24,7 +24,7 @@ const RecipePreview = ({ recipe, match, history }) => {
       </div>
       <div className='preview-title-name'>
         <h4>{title}</h4>
-        <h6>by {owner_name}</h6>
+        <h6>by <a href={`/exploreuser/:${owner}`} className="preview-owner-name">{owner_name}</a></h6>
       </div>
       <div className='recipe-preview-icons'>
         <div className='recipe-preview-row1'>

@@ -28,6 +28,19 @@ export const requestPublicRecipeById = (recipe_id) => (dispatch) => {
     .catch(error => dispatch({ type: PublicRecipesTypes.REQUEST_SINGLE_PUBLIC_RECIPE_FAILED, payload: error }))
 }
 
+export const requestExploreUserRecipes = (user_id) => (dispatch) => {
+  dispatch({ type: PublicRecipesTypes.REQUEST_EXPLORE_USER_RECIPE_PENDING })
+  apiCall(`https://chieh-recipe-manager.herokuapp.com/recipes/exploreuser/recipe/${user_id}`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(data => dispatch({ type: PublicRecipesTypes.REQUEST_EXPLORE_USER_RECIPE_SUCCESS, payload: data }))
+    .catch(error => dispatch({ type: PublicRecipesTypes.REQUEST_EXPLORE_USER_RECIPE_FAILED, payload: error }))
+}
+
 export const requestFilteredPublicRecipes = (keyword) => ({
   type: PublicRecipesTypes.REQUEST_FILTERED_PUBLIC_RECIPES,
   payload: keyword
