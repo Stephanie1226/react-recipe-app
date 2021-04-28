@@ -12,16 +12,16 @@
     background-position: center;
     border: 2px solid gray;
     border-radius: 50%;
-    width: 150px;
-    height: 150px;
+    width: 90px;
+    height: 90px;
     overflow: hidden;
     z-index: 1;
     @media (max-width: 770px) {
       display: none;
     }
     .explore-user-info-avatar-img {
-      max-width: 150px;
-      max-height: 150px;
+      max-width: 90px;
+      max-height: 90px;
       display: block;
     }
   }
