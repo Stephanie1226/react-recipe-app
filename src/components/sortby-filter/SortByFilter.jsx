@@ -42,7 +42,7 @@ const BootstrapInput = withStyles((theme) => ({
     backgroundColor: "#2A356C",
     fontSize: 16,
     color: "#ffffff",
-    padding: "10px 26px 10px 12px",
+    padding: "4px 26px 4px 12px",
     fontFamily: [
       '"Cabin"',
       'sans-serif',

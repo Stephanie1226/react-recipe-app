@@ -1,0 +1,58 @@
+.explore-user-info-container {
+  padding: 40px 0;
+  height: 220px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  
+  .explore-user-info-avatar {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px solid gray;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    overflow: hidden;
+    z-index: 1;
+    @media (max-width: 770px) {
+      display: none;
+    }
+    .explore-user-info-avatar-img {
+      max-width: 90px;
+      max-height: 90px;
+      display: block;
+    }
+  }
+  
+  .explore-user-info-name {
+    flex-grow: 1;
+    font-family: Frank Ruhl Libre;
+    color: #2A356C;
+    padding-left: 3%;
+  }
+
+  .explore-user-info-list {
+    display: flex;
+    text-align: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    .first-count {
+      padding-right: 30px;
+      margin-right: 30px;
+      border-right: 2px solid #2A356C;
+    }
+    h5 {
+      font-size: 25px;
+      margin-bottom: 3px;
+    }
+    span {
+      font-size: 16px;
+      color: #979797;
+      padding: 0 30px;
+    }
+  }
+
+}
